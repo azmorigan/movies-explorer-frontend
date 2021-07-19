@@ -1,9 +1,9 @@
 import './Main.css';
 
-function Main() {
+function Main(props) {
   return (
     <main className="Main">
-
+      {props.children}
     </main>
   );
 }

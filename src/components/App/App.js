@@ -1,22 +1,17 @@
 import './App.css';
-import poster from '../../images/landing-logo.svg';
 import photo from '../../images/photo.png';
 import Header from '../Header/Header';
+import Main from '../Main/Main';
+import Promo from '../Promo/Promo';
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <main>
-
-        <section>
-          <div>
-            <h1>Учебный проект студента факультета Веб-разработки.</h1>
-            <p>Листайте ниже, чтобы узнать больше про этот проект и его создателя.</p>
-            <img src={poster} alt="Земля"></img>
-          </div>
-          <button>Узнать больше</button>
-        </section>
+      <Main>
+        <Promo />
+      </Main>
+      {/* <main>
 
         <section>
           <h3>О проекте</h3>
@@ -112,7 +107,7 @@ function App() {
           </div>
         </footer>
 
-      </main>
+      </main> */}
     </div>
   );
 }
