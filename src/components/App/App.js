@@ -1,10 +1,10 @@
 import './App.css';
-import photo from '../../images/photo.png';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Promo from '../Promo/Promo';
 import AboutProject from '../AboutProject/AboutProject';
 import Techs from '../Techs/Techs';
+import AboutMe from '../AboutMe/AboutMe';
 
 function App() {
   return (
@@ -14,11 +14,11 @@ function App() {
         <Promo />
         <AboutProject />
         <Techs />
+        <AboutMe />
       </Main>
       {/* <main>
 
         <section>
-          <h3>Студент</h3>
           <div>
             <div>
               <h2>Виталий</h2>
