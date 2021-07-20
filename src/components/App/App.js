@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Promo from '../Promo/Promo';
 import AboutProject from '../AboutProject/AboutProject';
+import Techs from '../Techs/Techs';
 
 function App() {
   return (
@@ -12,23 +13,9 @@ function App() {
       <Main>
         <Promo />
         <AboutProject />
+        <Techs />
       </Main>
       {/* <main>
-
-        <section>
-          <h3>Технологии</h3>
-          <h2>7 Технологий</h2>
-          <p>На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
-          <ul>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JS</li>
-            <li>React</li>
-            <li>Git</li>
-            <li>Express.js</li>
-            <li>mongoDB</li>
-          </ul>
-        </section>
 
         <section>
           <h3>Студент</h3>
