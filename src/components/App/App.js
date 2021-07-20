@@ -3,6 +3,7 @@ import photo from '../../images/photo.png';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Promo from '../Promo/Promo';
+import AboutProject from '../AboutProject/AboutProject';
 
 function App() {
   return (
@@ -10,28 +11,9 @@ function App() {
       <Header />
       <Main>
         <Promo />
+        <AboutProject />
       </Main>
       {/* <main>
-
-        <section>
-          <h3>О проекте</h3>
-          <div>
-            <div>
-              <h4>Дипломный проект включал 5 этапов</h4>
-              <p>Составление плана, работу над бэкендом, вёрстку, добавление функциональности и финальные доработки.</p>
-            </div>
-            <div>
-              <h4>На выполнение диплома ушло 5 недель</h4>
-              <p>У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.</p>
-            </div>
-            <div>
-              <p>1 неделя</p>
-              <p>4 недели</p>
-              <p>Back-end</p>
-              <p>Front-end</p>
-            </div>
-          </div>
-        </section>
 
         <section>
           <h3>Технологии</h3>
