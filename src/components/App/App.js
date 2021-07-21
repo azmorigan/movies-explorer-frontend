@@ -5,6 +5,7 @@ import Promo from '../Promo/Promo';
 import AboutProject from '../AboutProject/AboutProject';
 import Techs from '../Techs/Techs';
 import AboutMe from '../AboutMe/AboutMe';
+import Portfolio from '../Portfolio/Portfolio';
 
 function App() {
   return (
@@ -15,22 +16,10 @@ function App() {
         <AboutProject />
         <Techs />
         <AboutMe />
+        <Portfolio />
       </Main>
       {/* <main>
 
-        <section>
-          <div>
-            <div>
-              <h2>Виталий</h2>
-              <h4>Фронтенд-разработчик, 22 года</h4>
-              <p>Я родился и живу в Саратове, закончил факультет экономики СГУ. У меня есть жена и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить.
-                С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.</p>
-              <p>Telegram</p>
-              <p>Github</p>
-            </div>
-            <img src={photo} alt="Фото"></img>
-          </div>
-        </section>
 
         <section>
           <div>
