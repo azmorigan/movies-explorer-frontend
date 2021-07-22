@@ -1,17 +1,25 @@
 import './Header.css';
-import Button from '../Button/Button';
 import Navigation from '../Navigation/Navigation';
-
+import { Link } from 'react-router-dom';
 
 function Header(props) {
   return (
     <header className={`Header ${props.loggedIn && 'Header_loggedIn'}`}>
       <div className="Header__container">
-        <a className="Header__logo" href="#"></a>
-        <Navigation>
-          <Button>Регистрация</Button>
-          <Button className="Button_type_landing">Войти</Button>
-        </Navigation>
+        <Link className="Header__logo" to="/"></Link>
+
+        {props.loggedIn ?
+          <Navigation>
+            <Link className="" to="/movies">Фильмы</Link>
+            <Link className="" to="/saved-movies">Сохраненные фильмы</Link>
+            <Link className="" to="/profile">Аккаунт</Link>
+          </Navigation> :
+          <Navigation>
+            <Link className="Header__link" to="/signup">Регистрация</Link>
+            <Link className="Header__link Header__link_type_signIn" to="/signin">Войти</Link>
+          </Navigation>
+        }
+
       </div>
     </header>
   );

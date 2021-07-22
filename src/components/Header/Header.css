@@ -36,3 +36,44 @@
   background-repeat: no-repeat;
   margin: 0;
 }
+
+.Header__link {
+  margin: 0 30px 0 0;
+  padding: 0;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  transition: opacity .3s;
+}
+
+.Header__link:last-child {
+  margin: 0;
+}
+
+.Header__link:hover {
+  opacity: .8;
+}
+
+@media screen and (max-width: 767px) {
+  .Header__link {
+    font-size: 10px;
+    margin-right: 14px;
+  }
+}
+
+.Header__link_type_signIn {
+  color: #000;
+  padding: 8px 20px;
+  border-radius: 3px;
+  background-color: #2BE080;
+}
+
+@media screen and (max-width: 767px) {
+  .Header__link_type_signIn {
+    padding: 5px 12px;
+  }
+}
