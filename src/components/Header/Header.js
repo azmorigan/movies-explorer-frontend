@@ -3,9 +3,9 @@ import Button from '../Button/Button';
 import Navigation from '../Navigation/Navigation';
 
 
-function Header() {
+function Header(props) {
   return (
-    <header className="Header">
+    <header className={`Header ${props.loggedIn && 'Header_loggedIn'}`}>
       <div className="Header__container">
         <a className="Header__logo" href="#"></a>
         <Navigation>

@@ -8,10 +8,15 @@
   color: #fff;
   cursor: pointer;
   border: none;
+  transition: opacity .3s;
 }
 
 .Button:last-child {
   margin: 0;
+}
+
+.Button:hover {
+  opacity: .8;
 }
 
 @media screen and (max-width: 767px) {

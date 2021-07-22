@@ -2,6 +2,10 @@
   background-color: #5c5c5c;
 }
 
+.Header_loggedIn {
+  background-color: #fff;
+}
+
 .Header__container {
   max-width: 1280px;
   margin: 0 auto;

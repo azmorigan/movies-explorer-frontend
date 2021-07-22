@@ -7,19 +7,61 @@ import Techs from '../Techs/Techs';
 import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
+import { Route, Switch } from 'react-router-dom';
+import { useState } from 'react';
 
 function App() {
+
+  const [loggedIn, setloggedIn] = useState(false);
+
+
   return (
     <div className="App">
-      <Header />
-      <Main>
-        <Promo />
-        <AboutProject />
-        <Techs />
-        <AboutMe />
-        <Portfolio />
-      </Main>
-      <Footer />
+      <Switch>
+
+        {/* Войти */}
+        <Route path="/signin">
+
+        </Route>
+
+        {/* Зарегистрироваться */}
+        <Route path="/signup">
+
+        </Route>
+
+        {/* О проекте */}
+        <Route exact path="/">
+          <Header loggedIn={loggedIn} />
+          <Main>
+            <Promo />
+            <AboutProject />
+            <Techs />
+            <AboutMe />
+            <Portfolio />
+          </Main>
+          <Footer />
+        </Route>
+
+        {/* Фильмы */}
+        <Route path="/movies">
+          <Header loggedIn={loggedIn} />
+          <Footer />
+        </Route>
+
+        {/* Сохраненные фильмы */}
+        <Route path="/saved-movies">
+          <Header loggedIn={loggedIn} />
+          <Footer />
+        </Route>
+
+        {/* Профиль */}
+        <Route path="/profile">
+          <Header loggedIn={loggedIn} />
+        </Route>
+
+      </Switch>
+
+
     </div>
   );
 }
