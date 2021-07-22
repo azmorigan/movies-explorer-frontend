@@ -104,6 +104,7 @@
 }
 
 .AboutMe__link {
+  display: inline-block;
   margin: 0 20px 0 0;
   padding: 0;
   color: #000;
@@ -111,10 +112,15 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
+  transition: opacity .3s ease-in-out;
 }
 
 .AboutMe__link:last-child {
   margin-right: 0;
+}
+
+.AboutMe__link:hover {
+  opacity: .7;
 }
 
 @media screen and (max-width: 767px) {

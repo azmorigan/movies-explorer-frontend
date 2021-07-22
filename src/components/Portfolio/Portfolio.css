@@ -42,6 +42,8 @@
   margin-bottom: 20px;
   padding-bottom: 19px;
   cursor: pointer;
+  color: #000;
+  text-decoration: none;
 }
 
 .Portfolio__link:last-child {

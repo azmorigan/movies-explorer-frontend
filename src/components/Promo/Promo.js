@@ -1,8 +1,15 @@
 import './Promo.css';
 import poster from '../../images/landing-logo.svg';
-import Button from '../Button/Button';
 
 function Promo() {
+
+  const scrollToProject = () => {
+    document.querySelector('.AboutProject').scrollIntoView({
+      block: 'start',
+      behavior: 'smooth',
+    })
+  }
+
   return (
     <section className="Promo">
       <div className="Promo__container">
@@ -11,7 +18,7 @@ function Promo() {
           <p className="Promo__text">Листайте ниже, чтобы узнать больше про этот проект и его создателя.</p>
           <img className="Promo__img" src={poster} alt="Земля"></img>
         </div>
-        <Button className="Button_type_promo">Узнать больше</Button>
+        <a onClick={scrollToProject} className="Promo__link" href="#AboutProject">Узнать больше</a>
       </div>
     </section >
   );

@@ -69,15 +69,24 @@
 }
 
 .Footer_link {
+  display: block;
   margin: 0 20px 0 0;
   padding: 0;
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000;
+  transition: opacity .3s ease-in-out;
 }
 
 .Footer_link:last-child {
   margin-right: 0;
+}
+
+.Footer_link:hover {
+  opacity: .7;
 }
 
 @media screen and (max-width: 767px) {

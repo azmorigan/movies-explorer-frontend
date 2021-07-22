@@ -9,9 +9,21 @@ function Footer() {
         <div className="Footer__box">
           <p className="Footer__copyright">&copy; 2021</p>
           <Navigation className="Navigation_type_footer">
-            <a className="Footer_link">Яндекс.Практикум</a>
-            <a className="Footer_link">Github</a>
-            <a className="Footer_link">Facebook</a>
+            <a
+              className="Footer_link"
+              href="https://praktikum.yandex.ru"
+              target="blank"
+              rel="noreferrer">Яндекс.Практикум</a>
+            <a
+              className="Footer_link"
+              href="https://github.com/azmorigan"
+              target="blank"
+              rel="noreferrer">Github</a>
+            <a
+              className="Footer_link"
+              href="https://t.me/azmorigan"
+              target="blank"
+              rel="noreferrer">Telegram</a>
           </Navigation>
         </div>
       </div>

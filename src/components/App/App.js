@@ -20,23 +20,6 @@ function App() {
         <Portfolio />
       </Main>
       <Footer />
-      {/* <main>
-
-        <footer>
-          <p>Учебный проект Яндекс.Практикум х BeatFilm.</p>
-          <div>
-            <p>© 2020</p>
-            <nav>
-              <ul>
-                <li>Яндекс.Практикум</li>
-                <li>Github</li>
-                <li>Facebook</li>
-              </ul>
-            </nav>
-          </div>
-        </footer>
-
-      </main> */}
     </div>
   );
 }

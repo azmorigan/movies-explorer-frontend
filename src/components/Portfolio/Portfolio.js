@@ -4,7 +4,11 @@ function Portfolio() {
   return (
     <section className="Portfolio">
       <h3 className="Portfolio__title">Портфолио</h3>
-      <a className="Portfolio__link">
+      <a
+        className="Portfolio__link"
+        href="https://azmorigan.github.io/how-to-learn/"
+        target="blank"
+        rel="noreferrer">
         <p className="Portfolio__project">Статичный сайт</p>
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="17" fill="none">
           <path
@@ -13,7 +17,11 @@ function Portfolio() {
           ></path>
         </svg>
       </a>
-      <a className="Portfolio__link">
+      <a
+        className="Portfolio__link"
+        href="https://azmorigan.github.io/russian-travel/"
+        target="blank"
+        rel="noreferrer">
         <p className="Portfolio__project">Адаптивный сайт</p>
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="17" fill="none">
           <path
@@ -22,7 +30,11 @@ function Portfolio() {
           ></path>
         </svg>
       </a>
-      <a className="Portfolio__link">
+      <a
+        className="Portfolio__link"
+        href="https://mesto-front.azmorigan.nomoredomains.club/"
+        target="blank"
+        rel="noreferrer">
         <p className="Portfolio__project">Одностраничное приложение</p>
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="17" fill="none">
           <path
