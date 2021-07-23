@@ -12,7 +12,7 @@ import { useState } from 'react';
 
 function App() {
 
-  const [loggedIn, setloggedIn] = useState(false);
+  const [loggedIn, setloggedIn] = useState(true);
 
 
   return (
@@ -42,22 +42,24 @@ function App() {
           <Footer />
         </Route>
 
+        {/* Профиль */}
+        <Route path="/profile">
+          <Header loggedIn={loggedIn} bc="Header_type_app" />
+        </Route>
+
         {/* Фильмы */}
         <Route path="/movies">
-          <Header loggedIn={loggedIn} />
+          <Header loggedIn={loggedIn} bc="Header_type_app" />
           <Footer />
         </Route>
 
         {/* Сохраненные фильмы */}
-        <Route path="/saved-movies">
-          <Header loggedIn={loggedIn} />
+        <Route path="/saved-movies" >
+          <Header loggedIn={loggedIn} bc="Header_type_app" />
           <Footer />
         </Route>
 
-        {/* Профиль */}
-        <Route path="/profile">
-          <Header loggedIn={loggedIn} />
-        </Route>
+
 
       </Switch>
 

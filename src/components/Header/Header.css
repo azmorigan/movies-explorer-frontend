@@ -2,7 +2,7 @@
   background-color: #5c5c5c;
 }
 
-.Header_loggedIn {
+.Header_type_app {
   background-color: #fff;
 }
 
@@ -76,4 +76,28 @@
   .Header__link_type_signIn {
     padding: 5px 12px;
   }
+}
+
+.Header__film {
+  margin: 0 20px 0 0;
+  padding: 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #000;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity .3s;
+}
+
+.Header__film:last-child {
+  margin-right: 0;
+}
+
+.Header__film:hover {
+  opacity: .8;
+}
+
+.Header__film_opened {
+  font-weight: 500;
 }
