@@ -9,11 +9,21 @@ import Portfolio from '../Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
 import { Route, Switch } from 'react-router-dom';
 import { useState } from 'react';
+import Sidebar from '../Sidebar/Sidebar';
+import CloseButton from '../CloseButton/CloseButton';
 
 function App() {
 
   const [loggedIn, setloggedIn] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
+  function openSidebar() {
+    setIsSidebarOpen(true)
+  }
+
+  function closeAnyPopup() {
+    setIsSidebarOpen(false)
+  }
 
   return (
     <div className="App">
@@ -31,7 +41,9 @@ function App() {
 
         {/* О проекте */}
         <Route exact path="/">
-          <Header loggedIn={loggedIn} />
+          <Header
+            loggedIn={loggedIn}
+            openSidebar={openSidebar} />
           <Main>
             <Promo />
             <AboutProject />
@@ -44,25 +56,36 @@ function App() {
 
         {/* Профиль */}
         <Route path="/profile">
-          <Header loggedIn={loggedIn} bc="Header_type_app" />
+          <Header
+            loggedIn={loggedIn}
+            bc="Header_type_app"
+            openSidebar={openSidebar} />
         </Route>
 
         {/* Фильмы */}
         <Route path="/movies">
-          <Header loggedIn={loggedIn} bc="Header_type_app" />
+          <Header
+            loggedIn={loggedIn}
+            bc="Header_type_app"
+            openSidebar={openSidebar} />
           <Footer />
         </Route>
 
         {/* Сохраненные фильмы */}
         <Route path="/saved-movies" >
-          <Header loggedIn={loggedIn} bc="Header_type_app" />
+          <Header
+            loggedIn={loggedIn}
+            bc="Header_type_app"
+            openSidebar={openSidebar} />
           <Footer />
         </Route>
 
 
 
       </Switch>
-
+      <Sidebar
+        isOpen={isSidebarOpen}
+        onClose={closeAnyPopup} />
 
     </div>
   );

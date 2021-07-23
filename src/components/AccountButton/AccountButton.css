@@ -11,6 +11,12 @@
   text-decoration: none;
 }
 
+@media screen and (max-width: 768px) {
+  .AccountButton {
+    display: none;
+  }
+}
+
 .AccountButton__title {
   border: none;
   margin: 0 0 0 8px;
