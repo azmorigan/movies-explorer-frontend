@@ -1,0 +1,114 @@
+.SearchForm {
+  max-width: 1140px;
+  padding: 70px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 1023px) {
+  .SearchForm {
+    padding: 80px 30px 109px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .SearchForm {
+    padding: 80px 10px 44px;
+  }
+}
+
+.SearchForm__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 72px;
+  padding-right: 20px;
+  background: #fdfdfd;
+  box-shadow: 0px 3px 14px rgba(0, 0, 0, 0.08);
+  border-radius: 9px;
+}
+
+@media screen and (max-width: 767px) {
+  .SearchForm__container {
+    padding: 0;
+  }
+}
+
+.SearchForm__form {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding-right: 39px;
+}
+
+@media screen and (max-width: 767px) {
+  .SearchForm__form {
+    width: 100%;
+    padding-right: 19px;
+  }
+}
+
+.SearchForm__form::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 1px;
+  height: 40px;
+  background: #CBCBCB;
+  top: -3px;
+  right: 20px;
+}
+
+@media screen and (max-width: 767px) {
+  .SearchForm__form::after {
+    display: none;
+  }
+}
+
+.SearchForm__input {
+  flex: 1;
+  border: none;
+  padding-left: 63px;
+  position: relative;
+  background-image: url(../../images/loupe.svg);
+  background-position: 28px center;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 767px) {
+  .SearchForm__input {
+    padding-left: 19px;
+    background: none;
+  }
+}
+
+.SearchForm__input:focus {
+  outline: none;
+}
+
+.SearchForm__input::placeholder {
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 20px;
+  color: #A0A0A0;
+}
+
+@media screen and (max-width: 767px) {
+  .SearchForm__input::placeholder {
+    font-size: 14px;
+  }
+}
+
+.SearchForm__button {
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+  background: #2BE080;
+  background-image: url(../../images/arrow-search.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+

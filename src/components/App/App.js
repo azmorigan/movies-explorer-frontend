@@ -11,6 +11,7 @@ import { Route, Switch } from 'react-router-dom';
 import { useState } from 'react';
 import Sidebar from '../Sidebar/Sidebar';
 import CloseButton from '../CloseButton/CloseButton';
+import SearchForm from '../SearchForm/SearchForm';
 
 function App() {
 
@@ -68,6 +69,7 @@ function App() {
             loggedIn={loggedIn}
             bc="Header_type_app"
             openSidebar={openSidebar} />
+          <SearchForm />
           <Footer />
         </Route>
 
@@ -77,7 +79,12 @@ function App() {
             loggedIn={loggedIn}
             bc="Header_type_app"
             openSidebar={openSidebar} />
+          <SearchForm />
           <Footer />
+        </Route>
+
+        <Route path="*">
+          <h1>page not found</h1>
         </Route>
 
 
