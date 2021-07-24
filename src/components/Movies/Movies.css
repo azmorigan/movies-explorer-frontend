@@ -1,0 +1,31 @@
+.Movies {
+  margin: 0 auto;
+  padding: 0 70px 10px;
+  max-width: 1280px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 1023px) {
+  .Movies {
+    padding: 0 30px 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .Movies {
+    padding: 0 10px 26px;
+  }
+}
+
+.Movies__line {
+  width: 100%;
+  height: 1px;
+  background-color: #e8e8e8;
+  margin-bottom: 80px;
+}
+
+@media screen and (max-width: 767px) {
+  .Movies__line {
+    margin-bottom: 50px;
+  }
+}
