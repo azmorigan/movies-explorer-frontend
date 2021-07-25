@@ -14,6 +14,7 @@ import CloseButton from '../CloseButton/CloseButton';
 import SearchForm from '../SearchForm/SearchForm';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 function App() {
 
@@ -88,7 +89,7 @@ function App() {
         </Route>
 
         <Route path="*">
-          <h1>page not found</h1>
+          <NotFoundPage />
         </Route>
 
 
