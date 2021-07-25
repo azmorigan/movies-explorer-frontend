@@ -13,6 +13,7 @@ import Sidebar from '../Sidebar/Sidebar';
 import CloseButton from '../CloseButton/CloseButton';
 import SearchForm from '../SearchForm/SearchForm';
 import Movies from '../Movies/Movies';
+import SavedMovies from '../SavedMovies/SavedMovies';
 
 function App() {
 
@@ -82,6 +83,7 @@ function App() {
             bc="Header_type_app"
             openSidebar={openSidebar} />
           <SearchForm />
+          <SavedMovies />
           <Footer />
         </Route>
 

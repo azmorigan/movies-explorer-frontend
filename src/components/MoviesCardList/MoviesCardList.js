@@ -25,6 +25,18 @@ const testCards = [
     img: "https://million-wallpapers.ru/wallpapers/1/0/430087956000929/bilbo-beggins-iz-xobbita.jpg",
     duration: 169,
   },
+
+  {
+    name: "Хоббит: Нежданное путешествие bbbbbbbbbbbbfhfhfhf",
+    img: "https://million-wallpapers.ru/wallpapers/1/0/430087956000929/bilbo-beggins-iz-xobbita.jpg",
+    duration: 169,
+  },
+
+  {
+    name: "Хоббит: Нежданное путешествие bbbbbbbbbbbbfhfhfhf",
+    img: "https://million-wallpapers.ru/wallpapers/1/0/430087956000929/bilbo-beggins-iz-xobbita.jpg",
+    duration: 169,
+  },
 ]
 
 function MoviesCardList(props) {

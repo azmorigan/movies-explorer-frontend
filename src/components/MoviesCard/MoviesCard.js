@@ -1,11 +1,11 @@
 import './MoviesCard.css';
-
-function like(params) {
-
-}
-
+import { useState } from 'react';
+import CloseButton from '../CloseButton/CloseButton';
 
 function MoviesCard(props) {
+
+  const isLiked = false;
+
   return (
     <li className="MoviesCard">
       <a className="MoviesCard__link">
@@ -16,8 +16,9 @@ function MoviesCard(props) {
           <h3 className="MoviesCard__title">{props.name}</h3>
           <p className="MoviesCard__duration">{props.duration}</p>
         </div>
-        <button
-          className="MoviesCard__like " />
+        {!isLiked
+          ? <button className="MoviesCard__like" />
+          : <button className="MoviesCard__delete" />}
       </div>
     </li>
   );

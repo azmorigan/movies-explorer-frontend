@@ -8,7 +8,8 @@ function Movies(props) {
       <div className="Movies__line" />
       {/* <Preloader /> */}
       <MoviesCardList />
-      {/* <h1>Ничего не найдено</h1> */}
+      {/* <h2 className="Movies__notice">Ничего не найдено :(</h2> */}
+      <div className="Movies__more">Ещё</div>
     </section>
 
 

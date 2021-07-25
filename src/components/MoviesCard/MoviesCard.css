@@ -116,3 +116,20 @@
 .MoviesCard__like_active {
   background-image: url(../../images/like.svg);
 }
+
+.MoviesCard__delete {
+  visibility: hidden;
+  position: inherit;
+  width: 8px;
+  height: 8px;
+  margin: 5px 11px 0 0;
+  background: transparent url(../../images/close-icon.svg);
+  background-size: contain;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.MoviesCard:hover .MoviesCard__delete {
+  visibility: visible;
+}

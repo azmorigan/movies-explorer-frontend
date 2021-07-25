@@ -3,7 +3,7 @@ import './CloseButton.css';
 function CloseButton(props) {
   return (
     <button
-      className="CloseButton"
+      className={`CloseButton ${props.className}`}
       onClick={props.onClose}
     />
   );
