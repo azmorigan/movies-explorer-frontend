@@ -10,15 +10,15 @@ import Footer from '../Footer/Footer';
 import { Route, Switch } from 'react-router-dom';
 import { useState } from 'react';
 import Sidebar from '../Sidebar/Sidebar';
-import CloseButton from '../CloseButton/CloseButton';
 import SearchForm from '../SearchForm/SearchForm';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
+import Profile from '../Profile/Profile';
 
 function App() {
 
-  const [loggedIn, setloggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(true);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
   function openSidebar() {
@@ -64,6 +64,7 @@ function App() {
             loggedIn={loggedIn}
             bc="Header_type_app"
             openSidebar={openSidebar} />
+          <Profile />
         </Route>
 
         {/* Фильмы */}
