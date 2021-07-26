@@ -23,7 +23,7 @@ function Profile(props) {
   }
 
   return (
-    <form className="Profile">
+    <form className="Profile" noValidate>
       <RequestError className="RequestError_type_edit" />
       <h2 className="Profile__title">Привет, userName!</h2>
       <div className="Profile__field">
