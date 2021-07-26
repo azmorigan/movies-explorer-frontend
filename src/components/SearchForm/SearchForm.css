@@ -74,6 +74,7 @@
   background-image: url(../../images/loupe.svg);
   background-position: 28px center;
   background-repeat: no-repeat;
+  background-color: #FDFDFD;
 }
 
 @media screen and (max-width: 767px) {
