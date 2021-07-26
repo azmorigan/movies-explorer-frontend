@@ -4,7 +4,14 @@ import { useState } from 'react';
 function Profile(props) {
 
   const [name, setName] = useState('userName');
-  const [email, setEmail] = useState('userEmail')
+  const [email, setEmail] = useState('userEmail');
+  const [disabledInput, setDisabledInput] = useState(true)
+  const [clickOnEdit, setClickOnEdit] = useState(false);
+
+  function openEditForm() {
+    setClickOnEdit(true)
+    setDisabledInput(false)
+  }
 
   function handleChangeName(e) {
     setName(e.target.value)
@@ -23,6 +30,7 @@ function Profile(props) {
           htmlFor="profileName">Имя
         </label>
         <input
+          disabled={disabledInput}
           className="Profile__input"
           type="text"
           id="profileName"
@@ -36,6 +44,7 @@ function Profile(props) {
           htmlFor="profileEmail">E-mail
         </label>
         <input
+          disabled={disabledInput}
           className="Profile__input"
           type="text"
           id="profileEmail"
@@ -43,14 +52,28 @@ function Profile(props) {
           onChange={handleChangeEmail} />
       </div>
 
-      <button
-        type="submit"
-        className="Profile__edit">Редактировать
-      </button>
+      {clickOnEdit
+        ? <button
+          type="submit"
+          className="Profile__saveButton">
+          Сохранить
+        </button>
+        : <>
+          <button
+            className="Profile__edit"
+            onClick={openEditForm}>
+            Редактировать
+          </button>
 
-      <button
-        className="Profile__logout">Выйти из аккаунта
-      </button>
+          <button
+            className="Profile__logout">Выйти из аккаунта
+          </button>
+        </>
+
+      }
+
+
+
 
     </form >
   );
