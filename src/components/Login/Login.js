@@ -14,10 +14,12 @@ function Login(props) {
     >
       <InputForm
         label="E-mail"
-        id="signinEmail" />
+        id="signinEmail"
+        type="text" />
       <InputForm
         label="Пароль"
-        id="signinPassword" />
+        id="signinPassword"
+        type="password" />
 
     </Entry>
   );

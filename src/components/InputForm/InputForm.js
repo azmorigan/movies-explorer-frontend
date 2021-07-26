@@ -18,7 +18,7 @@ function InputForm(props) {
       <input
         id={props.id}
         className="InputForm__input"
-        type="text"
+        type={props.type}
         onChange={handleChange}
         value={inputValue} />
     </div>

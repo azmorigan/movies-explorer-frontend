@@ -1,5 +1,6 @@
 import './Profile.css';
 import { useState } from 'react';
+import RequestError from '../RequestError/RequestError';
 
 function Profile(props) {
 
@@ -23,6 +24,7 @@ function Profile(props) {
 
   return (
     <form className="Profile">
+      <RequestError className="RequestError_type_edit" />
       <h2 className="Profile__title">Привет, userName!</h2>
       <div className="Profile__field">
         <label

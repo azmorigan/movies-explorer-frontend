@@ -12,13 +12,16 @@ function Register(props) {
       path="/signin">
       <InputForm
         label="Имя"
-        id="signupName" />
+        id="signupName"
+        type="text" />
       <InputForm
         label="E-mail"
-        id="signupEmail" />
+        id="signupEmail"
+        type="text" />
       <InputForm
         label="Пароль"
-        id="signupPassword" />
+        id="signupPassword"
+        type="password" />
 
     </Entry>
   );
