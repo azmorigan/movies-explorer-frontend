@@ -1,10 +1,11 @@
+import RequestError from '../RequestError/RequestError';
 import './Entry.css';
-import logo from '../../images/logo.svg';
 import { Link } from 'react-router-dom';
 
 function Entry(props) {
   return (
     <form className="Entry">
+      <RequestError className="RequestError_type_entry" />
       <Link to='/' className="Entry__logo" />
       <h2 className="Entry__title">{props.title}</h2>
       <div className={`Entry__inputsContainer ${props.inputsContainer}`}>
