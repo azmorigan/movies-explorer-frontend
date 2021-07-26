@@ -28,6 +28,7 @@
   background-image: url(../../images/logo.svg);
   background-size: contain;
   background-repeat: no-repeat;
+  transition: .3s;
 }
 
 @media screen and (max-width: 767px) {
@@ -35,6 +36,10 @@
     align-self: center;
     margin-bottom: 50px;
   }
+}
+
+.Entry__logo:hover {
+  opacity: .8;
 }
 
 .Entry__title {
@@ -86,6 +91,7 @@
   color: #FFFFFF;
   border: none;
   cursor: pointer;
+  transition: .3s;
 }
 
 @media screen and (max-width: 767px) {
@@ -95,6 +101,10 @@
     font-size: 12px;
     line-height: 15px;
   }
+}
+
+.Entry__button:hover {
+  filter: brightness(105%);
 }
 
 .Entry__question {
@@ -119,6 +129,7 @@
   line-height: 17px;
   color: #2BE080;
   text-decoration: none;
+  transition: .3s;
 }
 
 @media screen and (max-width: 767px) {
@@ -126,4 +137,8 @@
     font-size: 12px;
     line-height: 15px;
   }
+}
+
+.Entry__link:hover {
+  opacity: .8;
 }

@@ -133,10 +133,15 @@
   border-radius: 3px;
   padding: 10px 20px;
   text-decoration: none;
+  transition: .3s;
 }
 
 @media screen and (max-width: 1023px) {
   .Promo__link {
     align-self: center;
   }
+}
+
+.Promo__link:hover {
+  opacity: .4;
 }

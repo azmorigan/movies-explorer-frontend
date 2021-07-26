@@ -36,6 +36,11 @@
   background-size: contain;
   background-repeat: no-repeat;
   margin: 0;
+  transition: .3s;
+}
+
+.Header__logo:hover {
+  opacity: .8;
 }
 
 .Header__link {
@@ -48,7 +53,7 @@
   cursor: pointer;
   border: none;
   text-decoration: none;
-  transition: opacity .3s;
+  transition: .3s;
 }
 
 .Header__link:last-child {
@@ -89,6 +94,10 @@
   cursor: pointer;
   text-decoration: none;
   transition: opacity .3s;
+}
+
+.Header__film_type_main {
+  color:#fff;
 }
 
 .Header__film:last-child {

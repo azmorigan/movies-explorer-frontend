@@ -99,6 +99,7 @@
   width: 14px;
   height: 12px;
   cursor: pointer;
+  transition: .3s;
 }
 
 @media screen and (max-width: 767px) {
@@ -111,6 +112,10 @@
   .MoviesCard__like {
     margin-left: 14px;
   }
+}
+
+.MoviesCard__like:hover {
+ filter: contrast(90%); 
 }
 
 .MoviesCard__like_active {

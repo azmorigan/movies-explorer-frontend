@@ -108,7 +108,12 @@
   border: none;
   background: #2BE080;
   background-image: url(../../images/arrow-search.svg);
-  background-position: center;
+  background-position: 15px center;
   background-repeat: no-repeat;
+  transition: .3s;
+}
+
+.SearchForm__button:hover {
+  filter: contrast(120%);
 }
 

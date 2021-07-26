@@ -91,6 +91,7 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
+  transition: .3s;
 }
 
 @media screen and (max-width: 1023px) {
@@ -105,6 +106,10 @@
   }
 }
 
+.Profile__edit:hover {
+  opacity: .8;
+}
+
 .Profile__logout {
   font-weight: 500;
   font-size: 13px;
@@ -113,6 +118,7 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
+  transition: .3s;
 }
 
 @media screen and (max-width: 767px) {
@@ -120,6 +126,10 @@
     font-size: 12px;
     line-height: 15px;
   }
+}
+
+.Profile__logout:hover {
+  opacity: .8;
 }
 
 .Profile__saveButton {
@@ -133,7 +143,9 @@
   line-height: 17px;
   color: #fff;
   text-align: center;
-  border: none
+  border: none;
+  cursor: pointer;
+  transition: .3s;
 }
 
 @media screen and (max-width: 767px) {
@@ -142,5 +154,9 @@
     font-size: 12px;
     line-height: 15px;
   }
+}
+
+.Profile__saveButton:hover {
+  filter: brightness(105%);
 }
 

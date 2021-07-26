@@ -44,11 +44,16 @@
   cursor: pointer;
   color: #000;
   text-decoration: none;
+  transition: .3s;
 }
 
 .Portfolio__link:last-child {
   margin-bottom: 0;
   border-bottom: none;
+}
+
+.Portfolio__link:hover {
+  opacity: .7;
 }
 
 .Portfolio__project {
