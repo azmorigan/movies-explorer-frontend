@@ -1,0 +1,46 @@
+.RequestError {
+  display: none;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  position: absolute;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  text-align: center;
+  color: #FF004C;
+}
+
+.RequestError_type_edit {
+  bottom: 130px;
+}
+
+@media screen and (max-width: 1023px) {
+  .RequestError_type_edit {
+    bottom: 330px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .RequestError_type_edit {
+    bottom: 100px;
+  }
+}
+
+.RequestError_type_entry {
+  bottom: 160px;
+}
+
+@media screen and (max-width: 1023px) {
+  .RequestError_type_entry {
+    bottom: 320px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .RequestError_type_entry {
+    bottom: 114px;
+  }
+}

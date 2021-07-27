@@ -1,0 +1,12 @@
+.Navigation {
+  display: flex;
+  align-items: center;
+}
+
+
+@media screen and (max-width: 767px) {
+  .Navigation_type_footer {
+    flex-direction: column;
+    margin-bottom: 30px;
+  }
+}

@@ -1,0 +1,140 @@
+.MoviesCard {
+  font-style: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: #FDFDFD;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
+}
+
+.MoviesCard__link {
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.MoviesCard__image {
+  display: block;
+  object-fit: contain;
+  width: 100%;
+  height: auto;
+}
+
+.MoviesCard__data {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+@media screen and (max-width: 1023px) {
+  .MoviesCard__data {
+    padding: 14px;
+  }
+}
+
+.MoviesCard__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 290px;
+}
+
+@media screen and (max-width: 1280px) {
+  .MoviesCard__info {
+    max-width: 80%;
+  }
+}
+
+.MoviesCard__title {
+  margin: 0 0 17px 0;
+  padding: 0;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  max-width: 290px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 1023px) {
+  .MoviesCard__title {
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .MoviesCard__title {
+    font-size: 12px;
+    line-height: 15px;
+    margin-bottom: 14px;
+  }
+}
+
+.MoviesCard__duration {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  color: #A0A0A0;
+}
+
+@media screen and (max-width: 767px) {
+  .MoviesCard__duration {
+    font-size: 10px;
+    line-height: 12px;;
+  }
+}
+
+.MoviesCard__like {
+  margin: 2px 8px 0 20px;
+  padding: 0;
+  background: url(../../images/dislike.svg) no-repeat center;
+  background-color: transparent;
+  border: none;
+  width: 14px;
+  height: 12px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+@media screen and (max-width: 767px) {
+  .MoviesCard__like {
+    margin-left: 29px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .MoviesCard__like {
+    margin-left: 14px;
+  }
+}
+
+.MoviesCard__like:hover {
+ filter: contrast(90%); 
+}
+
+.MoviesCard__like_active {
+  background-image: url(../../images/like.svg);
+}
+
+.MoviesCard__delete {
+  visibility: hidden;
+  position: inherit;
+  width: 8px;
+  height: 8px;
+  margin: 5px 11px 0 0;
+  background: transparent url(../../images/close-icon.svg);
+  background-size: contain;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.MoviesCard:hover .MoviesCard__delete {
+  visibility: visible;
+}

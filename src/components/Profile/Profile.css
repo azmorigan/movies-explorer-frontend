@@ -1,0 +1,163 @@
+.Profile {
+  max-width: 410px;
+  margin: auto;
+  padding: 74px 0 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+@media screen and (max-width: 1023px) {
+  .Profile {
+    padding: 236px 0 269px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .Profile {
+    padding: 70px 30px 40px;
+  }
+}
+
+.Profile__title {
+  margin: 0 0 123px 0;
+  padding: 0;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  max-width: 410px;
+  word-wrap: break-word;
+}
+
+@media screen and (max-width: 1023px) {
+  .Profile__title {
+    margin-bottom: 96px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .Profile__title {
+    margin-bottom: 80px;
+  }
+}
+
+.Profile__field {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #E8E8E8;
+  margin-bottom: 17px;
+}
+
+.Profile__field:last-of-type {
+  padding: 0;
+  margin: 0;
+  border-bottom: none;
+}
+
+.Profile__label {
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.Profile__input {
+  text-align: right;
+  width: 60%;
+  border: none;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.Profile__input:focus {
+  outline: none;
+}
+
+.Profile__input:disabled {
+  color: #000;
+  background-color: #fff;
+}
+
+.Profile__edit {
+  margin: 220px 0 16px 0;
+  padding: 0;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: .3s;
+}
+
+@media screen and (max-width: 1023px) {
+  .Profile__edit {
+    margin-top: 210px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .Profile__edit {
+    margin-top: 379px;
+  }
+}
+
+.Profile__edit:hover {
+  opacity: .8;
+}
+
+.Profile__logout {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  color: #EE3465;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: .3s;
+}
+
+@media screen and (max-width: 767px) {
+  .Profile__logout {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+.Profile__logout:hover {
+  opacity: .8;
+}
+
+.Profile__saveButton {
+  margin-top: 236px;
+  padding: 14px 0;
+  width: 100%;
+  background: #2BE080;
+  border-radius: 3px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #fff;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: .3s;
+}
+
+@media screen and (max-width: 767px) {
+  .Profile__saveButton {
+    margin-top: 375px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+.Profile__saveButton:hover {
+  filter: brightness(105%);
+}
+

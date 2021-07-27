@@ -1,0 +1,38 @@
+.InputForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.InputForm:last-of-type {
+  margin-bottom: 0;
+}
+
+.InputForm__label {
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #A0A0A0;
+}
+
+.InputForm__input {
+  background: #F9F9F9;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  color: #000;
+  border: none;
+  padding: 15px;
+}
+
+.InputForm__input:focus {
+  outline: none;
+}
+
+.InputForm__input:last-child {
+  margin-bottom: 0;
+}

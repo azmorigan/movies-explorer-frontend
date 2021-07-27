@@ -1,0 +1,86 @@
+.FilterCheckbox {
+  flex-direction: row;
+  align-items: center;
+  width: 168px;
+}
+
+.FilterCheckbox_type_desktop {
+  display: flex;
+}
+
+@media screen and (max-width: 767px) {
+  .FilterCheckbox_type_desktop {
+    display: none;
+  }
+}
+
+.FilterCheckbox_type_mobile {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .FilterCheckbox_type_mobile {
+    margin: 45px auto 0;
+    display: flex;
+  }
+}
+
+
+.FilterCheckbox__case {
+  width: 36px;
+  height: 20px;
+  margin-right: 15px;
+}
+
+.FilterCheckbox__tumbler {
+  display: none;
+}
+
+.FilterCheckbox__pseudo-tumbler {
+  display: inline-block;
+  position: relative;
+  border-radius: 20px;
+  width: 36px;
+  height: 20px;
+  cursor: pointer;
+  background: #EBEBEB;
+  transition: .3s;
+}
+
+.FilterCheckbox__pseudo-tumbler::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: #F5F5F5;
+  border-radius: 50%;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+  transition: .3s;
+}
+
+.FilterCheckbox__tumbler:checked + .FilterCheckbox__pseudo-tumbler {
+  background: #2BE080;
+}
+
+.FilterCheckbox__tumbler:checked + .FilterCheckbox__pseudo-tumbler::before {
+  left: inherit;
+  right: 2px;
+  background: #fff;
+}
+
+.FilterCheckbox__title {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+@media screen and (max-width: 767px) {
+  .FilterCheckbox__title {
+    font-size: 11px;
+  }
+}

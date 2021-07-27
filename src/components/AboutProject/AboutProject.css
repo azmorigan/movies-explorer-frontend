@@ -1,0 +1,154 @@
+.AboutProject {
+  margin: 0 auto;
+  padding: 110px 70px 105px;
+  max-width: 1140px;
+}
+
+@media screen and (max-width: 1023px) {
+  .AboutProject {
+    padding: 90px 50px 85px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .AboutProject {
+    padding: 70px 18px 58px;
+  }
+}
+
+.AboutProject__info {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(min-content, max-content));
+  column-gap: 40px;
+  margin: 70px 0 110px;
+}
+
+@media screen and (max-width: 1023px) {
+  .AboutProject__info {
+    margin-bottom: 93px;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .AboutProject__info {
+    grid-template-columns: minmax(min-content, max-content);
+    margin: 60px 0;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .AboutProject__conditions:first-child {
+    margin-bottom: 56px;
+  }
+}
+
+.AboutProject__subtitle {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  margin: 0 0 26px 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 1023px) {
+  .AboutProject__subtitle {
+    margin-bottom: 22px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .AboutProject__subtitle {
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 16px;
+  }
+}
+
+.AboutProject__text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 1023px) {
+  .AboutProject__text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .AboutProject__text {
+    font-size: 11px;
+    line-height: 16px;
+  }
+}
+
+.AboutProject__progress {
+  display: grid;
+  grid-template-columns: 228px 1fr;
+  grid-template-rows: repeat(2, 36px);
+}
+
+@media screen and (max-width: 1023px) {
+  .AboutProject__progress {
+    grid-template-columns: 140px 1fr;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .AboutProject__progress {
+    grid-template-columns: 100px 1fr;
+    grid-template-rows: repeat(2, 35px);
+  }
+}
+
+.AboutProject__duration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.AboutProject__duration_type_backend {
+  background-color: #2BE080;
+}
+
+.AboutProject__duration_type_frontend {
+  background-color: #f2f2f2;
+}
+
+.AboutProject__time {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .AboutProject__time {
+    font-size: 11px;
+    line-height: 13px;
+  }
+}
+
+.AboutProject__stage {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #A0A0A0;
+  margin: 14px 0 0 0;
+  padding: 0;
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  .AboutProject__stage {
+    font-size: 11px;
+    line-height: 13px;
+    margin-top: 10px;
+  }
+}
