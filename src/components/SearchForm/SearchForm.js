@@ -3,10 +3,11 @@ import './SearchForm.css';
 
 function SearchForm(props) {
   return (
-    <form className="SearchForm" noValidate>
+    <form className="SearchForm">
       <div className="SearchForm__container">
         <div className="SearchForm__form">
           <input
+            required
             className="SearchForm__input"
             placeholder="Фильм" />
           <button type="submit" className="SearchForm__button" />
