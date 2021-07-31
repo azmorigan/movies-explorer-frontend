@@ -21,7 +21,10 @@ function MoviesCard(props) {
       <div className="MoviesCard__data">
         <div className="MoviesCard__info">
           <h3 className="MoviesCard__title">{props.name}</h3>
-          <p className="MoviesCard__duration">{props.duration}</p>
+          <p
+            className="MoviesCard__duration">
+            {Math.floor(props.duration / 60)}ч {props.duration % 60}м
+          </p>
         </div>
 
         <Switch>

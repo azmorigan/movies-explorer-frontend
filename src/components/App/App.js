@@ -20,13 +20,32 @@ import Login from '../Login/Login';
 import { MoviesApi } from '../../utils/MoviesApi';
 
 function App() {
-
+  // Найденные фильмы по запросу
   const [foundMovies, setFoundMovies] = useState([])
+  // Состояние сообщения "Ничего не найдено"
+  const [notFoundFilmsMessage, setNotFoundFilmsMessage] = useState(false)
+  // Состояние прелоадера
+  const [isLoading, setIsLoading] = useState(false)
 
+  function renderLoading(value) {
+    setIsLoading(value)
+  }
+  // Найти фильмы по запросу на BeatFilmMovies
   function searchMovies(query) {
+    setNotFoundFilmsMessage(false)
+    renderLoading(true)
     return MoviesApi.getMovies()
       .then(result => result.filter((item) => new RegExp(query, "gi").test(item.nameEN) || new RegExp(query, "gi").test(item.nameRU)))
-      .then(res => setFoundMovies(res))
+      .then(res => {
+        if (res.length === 0) {
+          setNotFoundFilmsMessage(true)
+          setFoundMovies([])
+        } else {
+          setFoundMovies(res)
+        }
+      })
+      .catch(err => console.log(err))
+      .finally(() => renderLoading(false))
   }
 
   const [loggedIn, setLoggedIn] = useState(true);
@@ -85,7 +104,10 @@ function App() {
             bc="Header_type_app"
             openSidebar={openSidebar} />
           <SearchForm onSearchFilms={searchMovies} />
-          <Movies films={foundMovies} />
+          <Movies
+            films={foundMovies}
+            notFoundFilms={notFoundFilmsMessage}
+            onLoad={isLoading} />
           <Footer />
         </Route>
 
