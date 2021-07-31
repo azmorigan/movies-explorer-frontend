@@ -1,8 +1,14 @@
 import './Movies.css';
 import Preloader from '../Preloader/Preloader'
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import { useEffect } from 'react';
+
+
 
 function Movies(props) {
+  useEffect(() => {
+    props.onRenderFilms()
+  }, [])
 
   return (
     <section className="Movies">

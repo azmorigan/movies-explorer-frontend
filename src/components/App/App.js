@@ -45,6 +45,7 @@ function App() {
   function checkArrForEmptiness(arr) {
     if (arr.length !== 0) {
       setFoundMovies(arr)
+      localStorage.setItem("userFilms", JSON.stringify(arr))
     } else {
       setNotFoundFilmsMessage(true)
       setFoundMovies([])
@@ -67,6 +68,13 @@ function App() {
         .then(result => checkArrForEmptiness(result))
         .catch(err => console.log(err))
         .finally(() => renderLoading(false))
+    }
+  }
+
+  function renderUserFilms() {
+    if (localStorage.getItem('userFilms')) {
+      const userFilms = JSON.parse(localStorage.getItem('userFilms'))
+      setFoundMovies(userFilms)
     }
   }
 
@@ -127,7 +135,8 @@ function App() {
           <Movies
             films={foundMovies}
             notFoundFilms={notFoundFilmsMessage}
-            onLoad={isLoading} />
+            onLoad={isLoading}
+            onRenderFilms={renderUserFilms} />
           <Footer />
         </Route>
 
