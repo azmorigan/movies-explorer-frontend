@@ -1,54 +1,18 @@
 import MoviesCard from '../MoviesCard/MoviesCard';
 import './MoviesCardList.css';
 
-// const testCards = [
-//   {
-//     name: "Хоббит: Нежданное путешествие",
-//     img: "https://million-wallpapers.ru/wallpapers/1/0/430087956000929/bilbo-beggins-iz-xobbita.jpg",
-//     duration: 169,
-//   },
-
-//   {
-//     name: "Хоббит: Нежданное путешествие",
-//     img: "https://million-wallpapers.ru/wallpapers/1/0/430087956000929/bilbo-beggins-iz-xobbita.jpg",
-//     duration: 169,
-//   },
-
-//   {
-//     name: "Хоббит: Нежданное путешествие",
-//     img: "https://million-wallpapers.ru/wallpapers/1/0/430087956000929/bilbo-beggins-iz-xobbita.jpg",
-//     duration: 169,
-//   },
-
-//   {
-//     name: "Хоббит: Нежданное путешествие bbbbbbbbbbbbfhfhfhf",
-//     img: "https://million-wallpapers.ru/wallpapers/1/0/430087956000929/bilbo-beggins-iz-xobbita.jpg",
-//     duration: 169,
-//   },
-
-//   {
-//     name: "Хоббит: Нежданное путешествие bbbbbbbbbbbbfhfhfhf",
-//     img: "https://million-wallpapers.ru/wallpapers/1/0/430087956000929/bilbo-beggins-iz-xobbita.jpg",
-//     duration: 169,
-//   },
-
-//   {
-//     name: "Хоббит: Нежданное путешествие bbbbbbbbbbbbfhfhfhf",
-//     img: "https://million-wallpapers.ru/wallpapers/1/0/430087956000929/bilbo-beggins-iz-xobbita.jpg",
-//     duration: 169,
-//   },
-// ]
-
 function MoviesCardList(props) {
+
   return (
     <ul className="MoviesCardList">
-      {/* {testCards.map((card, i) => (
+      {props.films.map((card) => (
         <MoviesCard
-          name={card.name}
-          img={card.img}
+          name={card.nameRU}
+          img={`https://api.nomoreparties.co${card.image.url}`}
           duration={card.duration}
-          key={i} />
-      ))} */}
+          trailerLink={card.trailerLink}
+          key={card.id} />
+      ))}
     </ul>
   );
 }

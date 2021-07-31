@@ -1,6 +1,8 @@
 .Header {
   display: flex;
-  align-self: center;
+  align-self: stretch;
+  flex-direction: column;
+  align-items: center;
   background-color: #5c5c5c;
 }
 
@@ -20,7 +22,7 @@
 
 @media screen and (max-width: 1279px) {
   .Header__container {
-    width: 100vw;
+    max-width: 100%;
   }
 }
 

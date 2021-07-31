@@ -1,6 +1,5 @@
 import './MoviesCard.css';
 import { useState } from 'react';
-import CloseButton from '../CloseButton/CloseButton';
 import { Route, Switch } from 'react-router-dom';
 
 function MoviesCard(props) {
@@ -12,7 +11,11 @@ function MoviesCard(props) {
 
   return (
     <li className="MoviesCard">
-      <a className="MoviesCard__link">
+      <a
+        className="MoviesCard__link"
+        href={props.trailerLink}
+        target="_blank"
+        rel="noreferrer">
         <img className="MoviesCard__image" src={props.img} alt={props.name} />
       </a>
       <div className="MoviesCard__data">

@@ -17,9 +17,21 @@
 
 .MoviesCard__image {
   display: block;
-  object-fit: contain;
+  object-fit: cover;
   width: 100%;
-  height: auto;
+  height: 203px;
+}
+
+@media screen and (max-width: 1023px) {
+  .MoviesCard__image {
+    height: 190px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .MoviesCard__image {
+    height: 168px;
+  }
 }
 
 .MoviesCard__data {

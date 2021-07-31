@@ -5,7 +5,7 @@ function SavedMovies(props) {
   return (
     <section className="SavedMovies">
       <div className="SavedMovies__line" />
-      <MoviesCardList />
+      {/* <MoviesCardList /> */}
     </section>
 
 
