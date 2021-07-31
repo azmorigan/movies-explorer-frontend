@@ -26,30 +26,49 @@ function App() {
   const [notFoundFilmsMessage, setNotFoundFilmsMessage] = useState(false)
   // Состояние прелоадера
   const [isLoading, setIsLoading] = useState(false)
+  // Залогинен ли пользователь.
+  const [loggedIn, setLoggedIn] = useState(true);
+  // Открыт ли сайдбар.
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
   function renderLoading(value) {
     setIsLoading(value)
   }
-  // Найти фильмы по запросу на BeatFilmMovies
-  function searchMovies(query) {
-    setNotFoundFilmsMessage(false)
-    renderLoading(true)
-    return MoviesApi.getMovies()
-      .then(result => result.filter((item) => new RegExp(query, "gi").test(item.nameEN) || new RegExp(query, "gi").test(item.nameRU)))
-      .then(res => {
-        if (res.length === 0) {
-          setNotFoundFilmsMessage(true)
-          setFoundMovies([])
-        } else {
-          setFoundMovies(res)
-        }
-      })
-      .catch(err => console.log(err))
-      .finally(() => renderLoading(false))
+
+  function searchFilmsByWord(arr, query) {
+    return arr.filter(item => {
+      return new RegExp(query, "gi").test(item.nameEN)
+        || new RegExp(query, "gi").test(item.nameRU)
+    })
   }
 
-  const [loggedIn, setLoggedIn] = useState(true);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  function checkArrForEmptiness(arr) {
+    if (arr.length !== 0) {
+      setFoundMovies(arr)
+    } else {
+      setNotFoundFilmsMessage(true)
+      setFoundMovies([])
+    }
+  }
+
+  // Найти фильмы по запросу на BeatFilmMovies
+  function searchFilms(query) {
+    setNotFoundFilmsMessage(false)
+    if (localStorage.getItem('allFilms')) {
+      const films = searchFilmsByWord(JSON.parse(localStorage.getItem('allFilms')), query)
+      checkArrForEmptiness(films)
+    } else {
+      renderLoading(true)
+      MoviesApi.getMovies()
+        .then(res => {
+          localStorage.setItem("allFilms", JSON.stringify(res))
+          return searchFilmsByWord(res, query)
+        })
+        .then(result => checkArrForEmptiness(result))
+        .catch(err => console.log(err))
+        .finally(() => renderLoading(false))
+    }
+  }
 
   function openSidebar() {
     setIsSidebarOpen(true)
@@ -103,7 +122,8 @@ function App() {
             loggedIn={loggedIn}
             bc="Header_type_app"
             openSidebar={openSidebar} />
-          <SearchForm onSearchFilms={searchMovies} />
+          <SearchForm
+            onSearchFilms={searchFilms} />
           <Movies
             films={foundMovies}
             notFoundFilms={notFoundFilmsMessage}

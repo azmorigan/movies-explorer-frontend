@@ -12,6 +12,10 @@
   transition: .3s;
 }
 
+.AccountButton_active {
+  border: 1px solid rgb(105, 105, 105);
+}
+
 .AccountButton:hover {
   opacity: .8;
 }
