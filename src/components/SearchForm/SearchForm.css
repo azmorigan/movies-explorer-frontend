@@ -1,12 +1,24 @@
 .SearchForm {
-  max-width: 1140px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: stretch;
+  width: 1280px;
   padding: 70px;
-  margin: 0 auto;
+  align-self: center;
   box-sizing: border-box;
+}
+
+@media screen and (max-width: 1279px) {
+  .SearchForm {
+    max-width: 100%;
+    padding: 80px 70px 109px;
+  }
 }
 
 @media screen and (max-width: 1023px) {
   .SearchForm {
+    width: 100%;
     padding: 80px 30px 109px;
   }
 }
@@ -22,6 +34,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  box-sizing: border-box;
   height: 72px;
   padding-right: 20px;
   background: #fdfdfd;

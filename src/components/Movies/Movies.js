@@ -7,9 +7,9 @@ function Movies(props) {
     <section className="Movies">
       <div className="Movies__line" />
       {/* <Preloader /> */}
-      <MoviesCardList />
+      <MoviesCardList films={props.films} />
       {/* <h2 className="Movies__notice">Ничего не найдено :(</h2> */}
-      <div className="Movies__more">Ещё</div>
+      {/* <div className="Movies__more">Ещё</div> */}
     </section>
 
 

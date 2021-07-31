@@ -8,7 +8,7 @@ import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
 import { Route, Switch } from 'react-router-dom';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Sidebar from '../Sidebar/Sidebar';
 import SearchForm from '../SearchForm/SearchForm';
 import Movies from '../Movies/Movies';
@@ -17,8 +17,17 @@ import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
+import { MoviesApi } from '../../utils/MoviesApi';
 
 function App() {
+
+  const [foundMovies, setFoundMovies] = useState([])
+
+  function searchMovies(query) {
+    return MoviesApi.getMovies()
+      .then(result => result.filter((item) => new RegExp(query, "gi").test(item.nameEN) || new RegExp(query, "gi").test(item.nameRU)))
+      .then(res => setFoundMovies(res))
+  }
 
   const [loggedIn, setLoggedIn] = useState(true);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
@@ -75,13 +84,13 @@ function App() {
             loggedIn={loggedIn}
             bc="Header_type_app"
             openSidebar={openSidebar} />
-          <SearchForm />
-          <Movies />
+          <SearchForm onSearchFilms={searchMovies} />
+          <Movies films={foundMovies} />
           <Footer />
         </Route>
 
         {/* Сохраненные фильмы */}
-        <Route path="/saved-movies" >
+        <Route path="/saved-movies">
           <Header
             loggedIn={loggedIn}
             bc="Header_type_app"
@@ -94,7 +103,6 @@ function App() {
         <Route path="*">
           <NotFoundPage />
         </Route>
-
 
 
       </Switch>

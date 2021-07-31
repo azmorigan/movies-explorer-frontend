@@ -1,12 +1,28 @@
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
+import React, { useState, useEffect } from "react";
 
 function SearchForm(props) {
+  const [searchFilm, setSearchFilm] = useState('')
+
+  function handleChangeSearchFilm(e) {
+    setSearchFilm(e.target.value)
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    props.onSearchFilms(searchFilm)
+  }
+
   return (
-    <form className="SearchForm">
+    <form
+      onSubmit={handleSubmit}
+      className="SearchForm">
       <div className="SearchForm__container">
         <div className="SearchForm__form">
           <input
+            onChange={handleChangeSearchFilm}
+            value={searchFilm}
             required
             className="SearchForm__input"
             placeholder="Фильм" />

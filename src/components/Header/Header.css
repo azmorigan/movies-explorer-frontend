@@ -1,4 +1,6 @@
 .Header {
+  display: flex;
+  align-self: center;
   background-color: #5c5c5c;
 }
 
@@ -7,14 +9,19 @@
 }
 
 .Header__container {
-  max-width: 1280px;
-  margin: 0 auto;
+  width: 1280px;
   padding: 18px 70px;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+@media screen and (max-width: 1279px) {
+  .Header__container {
+    width: 100vw;
+  }
 }
 
 @media screen and (max-width: 1023px) {

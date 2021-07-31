@@ -1,7 +1,9 @@
 .Movies {
-  margin: 0 auto;
+  align-self: center;
+  justify-content: center;
+  flex: 1;
   padding: 0 70px 10px;
-  max-width: 1280px;
+  width: 100%;
   box-sizing: border-box;
 }
 
