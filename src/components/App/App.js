@@ -7,7 +7,7 @@ import Techs from '../Techs/Techs';
 import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
 import React, { useState } from 'react';
 import Sidebar from '../Sidebar/Sidebar';
 import SearchForm from '../SearchForm/SearchForm';
@@ -19,6 +19,7 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import { MoviesApi } from '../../utils/MoviesApi';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import * as auth from '../../utils/auth';
 
 function App() {
   // Найденные фильмы по запросу
@@ -28,9 +29,10 @@ function App() {
   // Состояние прелоадера
   const [isLoading, setIsLoading] = useState(false)
   // Залогинен ли пользователь.
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   // Открыт ли сайдбар.
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const history = useHistory()
 
   function renderLoading(value) {
     setIsLoading(value)
@@ -87,18 +89,40 @@ function App() {
     setIsSidebarOpen(false)
   }
 
+  function handleRegister(name, email, password) {
+    auth.register(name, email, password)
+      .then(res => {
+        console.log(res)
+        history.push('/signin')
+      })
+      .catch(err => console.log(err))
+  }
+
+  function handleLogin(email, password) {
+    auth.authorize(email, password)
+      .then(res => {
+        console.log(res)
+        localStorage.setItem('jwt', res.jwt)
+        setLoggedIn(true)
+        history.push('/movies')
+      })
+      .catch(err => console.log(err))
+  }
+
   return (
     <div className="App">
       <Switch>
 
-        {/* Войти */}
-        <Route path="/signin">
-          <Login />
-        </Route>
-
         {/* Зарегистрироваться */}
         <Route path="/signup">
-          <Register />
+          <Register
+            handleRegister={handleRegister} />
+        </Route>
+
+        {/* Войти */}
+        <Route path="/signin">
+          <Login
+            handleLogin={handleLogin} />
         </Route>
 
         {/* О проекте */}
