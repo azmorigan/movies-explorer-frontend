@@ -7,7 +7,7 @@ import Techs from '../Techs/Techs';
 import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import React, { useState } from 'react';
 import Sidebar from '../Sidebar/Sidebar';
 import SearchForm from '../SearchForm/SearchForm';
@@ -18,6 +18,7 @@ import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import { MoviesApi } from '../../utils/MoviesApi';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 function App() {
   // Найденные фильмы по запросу
@@ -121,7 +122,9 @@ function App() {
             loggedIn={loggedIn}
             bc="Header_type_app"
             openSidebar={openSidebar} />
-          <Profile />
+          <ProtectedRoute
+            component={Profile}
+            loggedIn={loggedIn} />
         </Route>
 
         {/* Фильмы */}
@@ -132,7 +135,9 @@ function App() {
             openSidebar={openSidebar} />
           <SearchForm
             onSearchFilms={searchFilms} />
-          <Movies
+          <ProtectedRoute
+            component={Movies}
+            loggedIn={loggedIn}
             films={foundMovies}
             notFoundFilms={notFoundFilmsMessage}
             onLoad={isLoading}
@@ -147,7 +152,9 @@ function App() {
             bc="Header_type_app"
             openSidebar={openSidebar} />
           <SearchForm />
-          <SavedMovies />
+          <ProtectedRoute
+            component={SavedMovies}
+            loggedIn={loggedIn} />
           <Footer />
         </Route>
 

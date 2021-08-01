@@ -1,11 +1,12 @@
 .Profile {
-  max-width: 410px;
-  margin: auto;
+  width: 410px;
   padding: 74px 0 70px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  align-self: center;
+  box-sizing: border-box;
   position: relative;
 }
 
@@ -17,7 +18,8 @@
 
 @media screen and (max-width: 767px) {
   .Profile {
-    padding: 70px 30px 40px;
+    width: 290px;
+    padding: 70px 0 40px;
   }
 }
 
