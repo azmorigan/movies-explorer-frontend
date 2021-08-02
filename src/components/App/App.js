@@ -8,7 +8,7 @@ import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
 import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Sidebar from '../Sidebar/Sidebar';
 import SearchForm from '../SearchForm/SearchForm';
 import Movies from '../Movies/Movies';
@@ -20,8 +20,14 @@ import Login from '../Login/Login';
 import { MoviesApi } from '../../utils/MoviesApi';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import * as auth from '../../utils/auth';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function App() {
+  // Данные профиля
+  const [currentUser, setCurrentUser] = useState({
+    name: '',
+    email: '',
+  })
   // Найденные фильмы по запросу
   const [foundMovies, setFoundMovies] = useState([])
   // Состояние сообщения "Ничего не найдено"
@@ -89,6 +95,7 @@ function App() {
     setIsSidebarOpen(false)
   }
 
+  // Регистрация
   function handleRegister(name, email, password) {
     auth.register(name, email, password)
       .then(res => {
@@ -98,6 +105,7 @@ function App() {
       .catch(err => console.log(err))
   }
 
+  // Авторизация
   function handleLogin(email, password) {
     auth.authorize(email, password)
       .then(res => {
@@ -109,90 +117,114 @@ function App() {
       .catch(err => console.log(err))
   }
 
+  function handleTokenCheck() {
+    if (localStorage.getItem('jwt')) {
+      const jwt = localStorage.getItem('jwt')
+      auth.checkToken(jwt)
+        .then(res => {
+          setCurrentUser({
+            name: res.name,
+            email: res.email,
+          })
+          setLoggedIn(true)
+          history.push('/movies')
+        })
+        .catch(err => console.log(err))
+    }
+  }
+
+  useEffect(() => {
+    handleTokenCheck()
+  }, [])
+
   return (
-    <div className="App">
-      <Switch>
-
-        {/* Зарегистрироваться */}
-        <Route path="/signup">
-          <Register
-            handleRegister={handleRegister} />
-        </Route>
-
-        {/* Войти */}
-        <Route path="/signin">
-          <Login
-            handleLogin={handleLogin} />
-        </Route>
-
-        {/* О проекте */}
-        <Route exact path="/">
-          <Header
-            loggedIn={loggedIn}
-            openSidebar={openSidebar} />
-          <Main>
-            <Promo />
-            <AboutProject />
-            <Techs />
-            <AboutMe />
-            <Portfolio />
-          </Main>
-          <Footer />
-        </Route>
-
-        {/* Профиль */}
-        <Route path="/profile">
-          <Header
-            loggedIn={loggedIn}
-            bc="Header_type_app"
-            openSidebar={openSidebar} />
-          <ProtectedRoute
-            component={Profile}
-            loggedIn={loggedIn} />
-        </Route>
-
-        {/* Фильмы */}
-        <Route path="/movies">
-          <Header
-            loggedIn={loggedIn}
-            bc="Header_type_app"
-            openSidebar={openSidebar} />
-          <SearchForm
-            onSearchFilms={searchFilms} />
-          <ProtectedRoute
-            component={Movies}
-            loggedIn={loggedIn}
-            films={foundMovies}
-            notFoundFilms={notFoundFilmsMessage}
-            onLoad={isLoading}
-            onRenderFilms={renderUserFilms} />
-          <Footer />
-        </Route>
-
-        {/* Сохраненные фильмы */}
-        <Route path="/saved-movies">
-          <Header
-            loggedIn={loggedIn}
-            bc="Header_type_app"
-            openSidebar={openSidebar} />
-          <SearchForm />
-          <ProtectedRoute
-            component={SavedMovies}
-            loggedIn={loggedIn} />
-          <Footer />
-        </Route>
-
-        <Route path="*">
-          <NotFoundPage />
-        </Route>
+    <CurrentUserContext.Provider value={currentUser}>
 
 
-      </Switch>
-      <Sidebar
-        isOpen={isSidebarOpen}
-        onClose={closeAnyPopup} />
+      <div className="App">
+        <Switch>
 
-    </div>
+          {/* Зарегистрироваться */}
+          <Route path="/signup">
+            <Register
+              handleRegister={handleRegister} />
+          </Route>
+
+          {/* Войти */}
+          <Route path="/signin">
+            <Login
+              handleLogin={handleLogin} />
+          </Route>
+
+          {/* О проекте */}
+          <Route exact path="/">
+            <Header
+              loggedIn={loggedIn}
+              openSidebar={openSidebar} />
+            <Main>
+              <Promo />
+              <AboutProject />
+              <Techs />
+              <AboutMe />
+              <Portfolio />
+            </Main>
+            <Footer />
+          </Route>
+
+          {/* Профиль */}
+          <Route path="/profile">
+            <Header
+              loggedIn={loggedIn}
+              bc="Header_type_app"
+              openSidebar={openSidebar} />
+            <ProtectedRoute
+              component={Profile}
+              loggedIn={loggedIn} />
+          </Route>
+
+          {/* Фильмы */}
+          <Route path="/movies">
+            <Header
+              loggedIn={loggedIn}
+              bc="Header_type_app"
+              openSidebar={openSidebar} />
+            <SearchForm
+              onSearchFilms={searchFilms} />
+            <ProtectedRoute
+              component={Movies}
+              loggedIn={loggedIn}
+              films={foundMovies}
+              notFoundFilms={notFoundFilmsMessage}
+              onLoad={isLoading}
+              onRenderFilms={renderUserFilms} />
+            <Footer />
+          </Route>
+
+          {/* Сохраненные фильмы */}
+          <Route path="/saved-movies">
+            <Header
+              loggedIn={loggedIn}
+              bc="Header_type_app"
+              openSidebar={openSidebar} />
+            <SearchForm />
+            <ProtectedRoute
+              component={SavedMovies}
+              loggedIn={loggedIn} />
+            <Footer />
+          </Route>
+
+          <Route path="*">
+            <NotFoundPage />
+          </Route>
+
+
+        </Switch>
+        <Sidebar
+          isOpen={isSidebarOpen}
+          onClose={closeAnyPopup} />
+
+      </div>
+    </CurrentUserContext.Provider>
   );
 }
 
