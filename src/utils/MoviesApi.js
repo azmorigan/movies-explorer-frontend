@@ -1,5 +1,5 @@
-class BeatfilmMoviesApi {
-  constructor({url}) {
+class MoviesApi {
+  constructor({ url }) {
     this._url = url;
   }
   getMovies() {
@@ -13,6 +13,6 @@ class BeatfilmMoviesApi {
   }
 }
 
-export const MoviesApi = new BeatfilmMoviesApi({
+export const moviesApi = new MoviesApi({
   url: "https://api.nomoreparties.co/beatfilm-movies/"
 })

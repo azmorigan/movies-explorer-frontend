@@ -17,7 +17,8 @@ import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
-import { MoviesApi } from '../../utils/MoviesApi';
+import { moviesApi } from '../../utils/MoviesApi';
+import { mainApi } from '../../utils/MainApi';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import * as auth from '../../utils/auth';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
@@ -30,6 +31,8 @@ function App() {
   })
   // Найденные фильмы по запросу
   const [foundMovies, setFoundMovies] = useState([])
+  // Сохраненные фильмы
+  const [savedMovies, setSavedMovies] = useState([])
   // Состояние сообщения "Ничего не найдено"
   const [notFoundFilmsMessage, setNotFoundFilmsMessage] = useState(false)
   // Состояние прелоадера
@@ -54,7 +57,7 @@ function App() {
   function checkArrForEmptiness(arr) {
     if (arr.length !== 0) {
       setFoundMovies(arr)
-      localStorage.setItem("userFilms", JSON.stringify(arr))
+      localStorage.setItem("userSearchFilms", JSON.stringify(arr))
     } else {
       setNotFoundFilmsMessage(true)
       setFoundMovies([])
@@ -69,7 +72,7 @@ function App() {
       checkArrForEmptiness(films)
     } else {
       renderLoading(true)
-      MoviesApi.getMovies()
+      moviesApi.getMovies()
         .then(res => {
           localStorage.setItem("allFilms", JSON.stringify(res))
           return searchFilmsByWord(res, query)
@@ -81,9 +84,9 @@ function App() {
   }
 
   function renderUserFilms() {
-    if (localStorage.getItem('userFilms')) {
-      const userFilms = JSON.parse(localStorage.getItem('userFilms'))
-      setFoundMovies(userFilms)
+    if (localStorage.getItem('userSearchFilms')) {
+      const userSearchFilms = JSON.parse(localStorage.getItem('userSearchFilms'))
+      setFoundMovies(userSearchFilms)
     }
   }
 
@@ -139,8 +142,26 @@ function App() {
     setLoggedIn(false)
   }
 
+  function getMovies() {
+    mainApi.getUserMovies(localStorage.getItem('jwt'))
+      .then(res => {
+        setSavedMovies(res)
+      })
+      .catch(err => console.log(err))
+  }
+
+  function saveMovie(movie) {
+    mainApi.saveMovie(movie, localStorage.getItem('jwt'))
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
+  }
+
   useEffect(() => {
     handleTokenCheck()
+  }, [])
+
+  useEffect(() => {
+    getMovies()
   }, [])
 
   return (
@@ -203,6 +224,7 @@ function App() {
               films={foundMovies}
               notFoundFilms={notFoundFilmsMessage}
               onLoad={isLoading}
+              onSaveMovie={saveMovie}
               onRenderFilms={renderUserFilms} />
             <Footer />
           </Route>
@@ -215,6 +237,7 @@ function App() {
               openSidebar={openSidebar} />
             <SearchForm />
             <ProtectedRoute
+              films={savedMovies}
               component={SavedMovies}
               loggedIn={loggedIn} />
             <Footer />

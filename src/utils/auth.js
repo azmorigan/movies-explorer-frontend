@@ -6,7 +6,7 @@ function checkResponse(data) {
   }
 }
 
-export const BASE_URL = "http://api.kinoskop.nomoredomains.club"
+export const BASE_URL = "https://api.kinoskop.nomoredomains.club"
 
 export const register = (name, email, password) => {
   return fetch(`${BASE_URL}/signup`, {
