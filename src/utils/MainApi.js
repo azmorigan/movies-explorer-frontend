@@ -37,6 +37,17 @@ class MainApi {
       .then(this._checkResponse)
   }
 
+  deleteMovie(filmId, token) {
+    return fetch(this._url + '/movies/' + filmId, {
+      method: 'DELETE',
+      headers: {
+        authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(this._checkResponse)
+  }
+
   _checkResponse(res) {
     if (res.ok) {
       return res.json()

@@ -152,16 +152,23 @@ function App() {
 
   function saveMovie(movie) {
     mainApi.saveMovie(movie, localStorage.getItem('jwt'))
-      .then(res => console.log(res))
+      .then(newMovie => {
+        setSavedMovies([...savedMovies, newMovie])
+      })
+      .catch(err => console.log(err))
+  }
+
+  function handleMovieDelete(filmId) {
+    mainApi.deleteMovie(filmId, localStorage.getItem('jwt'))
+      .then((res) => {
+        const newCards = savedMovies.filter(movie => movie._id !== res._id)
+        setSavedMovies(newCards)
+      })
       .catch(err => console.log(err))
   }
 
   useEffect(() => {
     handleTokenCheck()
-  }, [])
-
-  useEffect(() => {
-    getMovies()
   }, [])
 
   return (
@@ -237,6 +244,8 @@ function App() {
               openSidebar={openSidebar} />
             <SearchForm />
             <ProtectedRoute
+              getMovies={getMovies}
+              onDeleteMovie={handleMovieDelete}
               films={savedMovies}
               component={SavedMovies}
               loggedIn={loggedIn} />

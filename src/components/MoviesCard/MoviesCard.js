@@ -10,6 +10,10 @@ function MoviesCard(props) {
     props.onSaveMovie(props)
   }
 
+  function handleMovieDelete() {
+    props.onDeleteMovie(props._id)
+  }
+
   return (
     <li className="MoviesCard">
       <a
@@ -43,7 +47,9 @@ function MoviesCard(props) {
               className={`MoviesCard__like ${isLiked && 'MoviesCard__like_active'}`} />
           </Route>
           <Route path="/saved-movies">
-            <button className="MoviesCard__delete" />
+            <button
+              onClick={handleMovieDelete}
+              className="MoviesCard__delete" />
           </Route>
         </Switch>
 

@@ -14,13 +14,13 @@ function MoviesCardList(props) {
           <Route path='/movies'>
             <MoviesCard
               onSaveMovie={props.onSaveMovie}
-
               {...card}
               key={card.id} />
           </Route>
 
           <Route path='/saved-movies'>
             <MoviesCard
+              onDeleteMovie={props.onDeleteMovie}
               name={card.nameRU}
               {...card}
               key={card._id} />
