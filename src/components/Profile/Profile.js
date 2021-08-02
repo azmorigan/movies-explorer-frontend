@@ -68,7 +68,9 @@ function Profile(props) {
           </button>
 
           <button
-            className="Profile__logout">Выйти из аккаунта
+            className="Profile__logout"
+            onClick={props.onSignOut}>
+            Выйти из аккаунта
           </button>
         </>
 

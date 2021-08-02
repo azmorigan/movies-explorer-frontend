@@ -133,6 +133,12 @@ function App() {
     }
   }
 
+  function handleSignOut() {
+    localStorage.removeItem('jwt')
+    history.push('/')
+    setLoggedIn(false)
+  }
+
   useEffect(() => {
     handleTokenCheck()
   }, [])
@@ -178,6 +184,7 @@ function App() {
               bc="Header_type_app"
               openSidebar={openSidebar} />
             <ProtectedRoute
+              onSignOut={handleSignOut}
               component={Profile}
               loggedIn={loggedIn} />
           </Route>
