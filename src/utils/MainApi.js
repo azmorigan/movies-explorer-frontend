@@ -48,6 +48,18 @@ class MainApi {
       .then(this._checkResponse)
   }
 
+  editUser(name, email, token) {
+    return fetch(this._url + '/users/me', {
+      method: 'PATCH',
+      headers: {
+        authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, email })
+    })
+      .then(this._checkResponse)
+  }
+
   _checkResponse(res) {
     if (res.ok) {
       return res.json()

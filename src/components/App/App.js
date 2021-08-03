@@ -177,6 +177,17 @@ function App() {
     })
   }
 
+  function handleEditUser({ name, email }) {
+    mainApi.editUser(name, email, localStorage.getItem('jwt'))
+      .then(res => {
+        console.log(res)
+        setCurrentUser({
+          name: res.name,
+          email: res.email,
+        })
+      })
+  }
+
   useEffect(() => {
     getMovies()
     handleTokenCheck()
@@ -224,6 +235,7 @@ function App() {
               bc="Header_type_app"
               openSidebar={openSidebar} />
             <ProtectedRoute
+              onEditUser={handleEditUser}
               onSignOut={handleSignOut}
               component={Profile}
               loggedIn={loggedIn} />

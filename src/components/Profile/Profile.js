@@ -1,11 +1,14 @@
 import './Profile.css';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import RequestError from '../RequestError/RequestError';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function Profile(props) {
 
-  const [name, setName] = useState('userName');
-  const [email, setEmail] = useState('userEmail');
+  const currentUser = useContext(CurrentUserContext);
+  const [name, setName] = useState(currentUser.name);
+  const [email, setEmail] = useState(currentUser.email);
+
   const [disabledInput, setDisabledInput] = useState(true)
   const [clickOnEdit, setClickOnEdit] = useState(false);
 
@@ -24,6 +27,7 @@ function Profile(props) {
 
   function handleSubmit(e) {
     e.preventDefault()
+    props.onEditUser({ name, email })
     setClickOnEdit(false)
   }
 
