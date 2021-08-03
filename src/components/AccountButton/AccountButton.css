@@ -21,8 +21,14 @@
 }
 
 @media screen and (max-width: 768px) {
-  .AccountButton {
+  .AccountButton_type_header {
     display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .AccountButton_type_sidebar {
+    display: flex;
   }
 }
 

@@ -33,7 +33,9 @@ function Header(props) {
                   activeClassName="Header__film_opened"
                   to="/saved-movies">
                   Сохраненные фильмы</NavLink>
-                <AccountButton mainPage={true} />
+                <AccountButton
+                  mainPage={true}
+                  className="AccountButton_type_header" />
                 <button
                   className="Header__burger"
                   onClick={props.openSidebar}></button>
@@ -51,7 +53,7 @@ function Header(props) {
                   activeClassName="Header__film_opened"
                   to="/saved-movies">
                   Сохраненные фильмы</NavLink>
-                <AccountButton />
+                <AccountButton className="AccountButton_type_header" />
                 <button
                   className="Header__burger"
                   onClick={props.openSidebar}></button>
