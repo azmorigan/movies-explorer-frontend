@@ -1,10 +1,12 @@
 import './MoviesCard.css';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { SavedMoviesContext } from '../../contexts/SavedMoviesContext';
 
 function MoviesCard(props) {
+  const savedMovies = useContext(SavedMoviesContext)
 
-  const [isLiked, setIsLiked] = useState(false)
+  const isSaved = savedMovies.some(film => film.nameRU === props.nameRU)
 
   function handleLikeCLick() {
     props.onSaveMovie(props)
@@ -13,6 +15,17 @@ function MoviesCard(props) {
   function handleMovieDelete() {
     props.onDeleteMovie(props._id)
   }
+
+  // Найти фильм из сохраненных, соответствующий фильму из
+  // найденных фильмов и удалить его, isSaved поменяется
+  function handleDeleteSearchMovie() {
+    props.onDeleteSearchMovie(props)
+  }
+
+  const toggleLikeCard = () => {
+    isSaved ? handleDeleteSearchMovie() : handleLikeCLick()
+  }
+
 
   return (
     <li className="MoviesCard">
@@ -43,8 +56,8 @@ function MoviesCard(props) {
         <Switch>
           <Route path="/movies">
             <button
-              onClick={handleLikeCLick}
-              className={`MoviesCard__like ${isLiked && 'MoviesCard__like_active'}`} />
+              onClick={toggleLikeCard}
+              className={`MoviesCard__like ${isSaved && 'MoviesCard__like_active'}`} />
           </Route>
           <Route path="/saved-movies">
             <button

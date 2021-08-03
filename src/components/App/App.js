@@ -22,6 +22,7 @@ import { mainApi } from '../../utils/MainApi';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import * as auth from '../../utils/auth';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { SavedMoviesContext } from '../../contexts/SavedMoviesContext';
 
 function App() {
   // Данные профиля
@@ -161,15 +162,25 @@ function App() {
   function handleMovieDelete(filmId) {
     mainApi.deleteMovie(filmId, localStorage.getItem('jwt'))
       .then((res) => {
-        const newCards = savedMovies.filter(movie => movie._id !== res._id)
+        const newCards = savedMovies.filter(movie => movie.nameRU !== res.nameRU)
         setSavedMovies(newCards)
       })
       .catch(err => console.log(err))
   }
 
+  function handleDeleteSearchMovie(movie) {
+    savedMovies.forEach(item => {
+      if (item.nameRU === movie.nameRU) {
+        handleMovieDelete(item._id)
+      }
+    })
+  }
+
   useEffect(() => {
+    getMovies()
     handleTokenCheck()
   }, [])
+
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -217,40 +228,47 @@ function App() {
               loggedIn={loggedIn} />
           </Route>
 
-          {/* Фильмы */}
-          <Route path="/movies">
-            <Header
-              loggedIn={loggedIn}
-              bc="Header_type_app"
-              openSidebar={openSidebar} />
-            <SearchForm
-              onSearchFilms={searchFilms} />
-            <ProtectedRoute
-              component={Movies}
-              loggedIn={loggedIn}
-              films={foundMovies}
-              notFoundFilms={notFoundFilmsMessage}
-              onLoad={isLoading}
-              onSaveMovie={saveMovie}
-              onRenderFilms={renderUserFilms} />
-            <Footer />
-          </Route>
 
-          {/* Сохраненные фильмы */}
-          <Route path="/saved-movies">
-            <Header
-              loggedIn={loggedIn}
-              bc="Header_type_app"
-              openSidebar={openSidebar} />
-            <SearchForm />
-            <ProtectedRoute
-              getMovies={getMovies}
-              onDeleteMovie={handleMovieDelete}
-              films={savedMovies}
-              component={SavedMovies}
-              loggedIn={loggedIn} />
-            <Footer />
-          </Route>
+          <SavedMoviesContext.Provider value={savedMovies}>
+            {/* Фильмы */}
+            <Route path="/movies">
+              <Header
+                loggedIn={loggedIn}
+                bc="Header_type_app"
+                openSidebar={openSidebar} />
+              <SearchForm
+                onSearchFilms={searchFilms} />
+              <ProtectedRoute
+                onDeleteSearchMovie={handleDeleteSearchMovie}
+                component={Movies}
+                loggedIn={loggedIn}
+                films={foundMovies}
+                notFoundFilms={notFoundFilmsMessage}
+                onLoad={isLoading}
+                onSaveMovie={saveMovie}
+                onRenderFilms={renderUserFilms} />
+              <Footer />
+            </Route>
+
+
+
+            {/* Сохраненные фильмы */}
+            <Route path="/saved-movies">
+              <Header
+                loggedIn={loggedIn}
+                bc="Header_type_app"
+                openSidebar={openSidebar} />
+              <SearchForm />
+              <ProtectedRoute
+                getMovies={getMovies}
+                onDeleteMovie={handleMovieDelete}
+                films={savedMovies}
+                component={SavedMovies}
+                loggedIn={loggedIn} />
+              <Footer />
+            </Route>
+
+          </SavedMoviesContext.Provider>
 
           <Route path="*">
             <NotFoundPage />

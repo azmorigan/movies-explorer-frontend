@@ -4,10 +4,6 @@ import { useEffect } from 'react';
 
 function SavedMovies(props) {
 
-  useEffect(() => {
-    props.getMovies()
-  }, [])
-
   return (
     <section className="SavedMovies">
       <div className="SavedMovies__line" />

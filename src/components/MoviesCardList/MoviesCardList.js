@@ -8,31 +8,26 @@ function MoviesCardList(props) {
 
     <ul className="MoviesCardList">
 
-      {props.films.map((card, i) => (
-
+      {props.films.map((film, i) => (
         <Switch key={i}>
           <Route path='/movies'>
             <MoviesCard
+              onDeleteSearchMovie={props.onDeleteSearchMovie}
               onSaveMovie={props.onSaveMovie}
-              {...card}
-              key={card.id} />
+              {...film}
+              key={film.id} />
           </Route>
 
           <Route path='/saved-movies'>
             <MoviesCard
               onDeleteMovie={props.onDeleteMovie}
-              name={card.nameRU}
-              {...card}
-              key={card._id} />
+              name={film.nameRU}
+              {...film}
+              key={film._id}
+              savedFilms={props.savedFilms} />
           </Route>
         </Switch>
-
-
-
-
-      ))
-      }
-
+      ))}
     </ul >
 
   );

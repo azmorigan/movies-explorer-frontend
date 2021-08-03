@@ -15,6 +15,7 @@ function Movies(props) {
       <div className="Movies__line" />
       {props.onLoad ? <Preloader />
         : <MoviesCardList
+          onDeleteSearchMovie={props.onDeleteSearchMovie}
           films={props.films}
           onSaveMovie={props.onSaveMovie} />}
       {props.notFoundFilms && <h2 className="Movies__notice">Ничего не найдено :(</h2>}
