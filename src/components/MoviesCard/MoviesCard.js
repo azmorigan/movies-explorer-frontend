@@ -31,7 +31,7 @@ function MoviesCard(props) {
     <li className="MoviesCard">
       <a
         className="MoviesCard__link"
-        href={props.trailerLink}
+        href={props.trailerLink || props.trailer}
         target="_blank"
         rel="noreferrer">
         <Switch>

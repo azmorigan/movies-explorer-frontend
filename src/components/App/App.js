@@ -102,9 +102,8 @@ function App() {
   // Регистрация
   function handleRegister(name, email, password) {
     auth.register(name, email, password)
-      .then(res => {
-        console.log(res)
-        history.push('/signin')
+      .then((res) => {
+        handleLogin(res.email, password)
       })
       .catch(err => console.log(err))
   }
@@ -139,6 +138,8 @@ function App() {
 
   function handleSignOut() {
     localStorage.removeItem('jwt')
+    localStorage.removeItem('allFilms')
+    localStorage.removeItem('userSearchFilms')
     history.push('/')
     setLoggedIn(false)
   }

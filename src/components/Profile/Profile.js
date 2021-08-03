@@ -22,8 +22,16 @@ function Profile(props) {
     setEmail(e.target.value)
   }
 
+  function handleSubmit(e) {
+    e.preventDefault()
+    setClickOnEdit(false)
+  }
+
   return (
-    <form className="Profile" noValidate>
+    <form
+      onSubmit={handleSubmit}
+      className="Profile"
+      noValidate>
       <RequestError className="RequestError_type_edit" />
       <h2 className="Profile__title">Привет, userName!</h2>
       <div className="Profile__field">
