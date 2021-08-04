@@ -42,6 +42,11 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   // Открыт ли сайдбар.
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  // Был ли поиск фильмов
+  const [newSearch, setNewSearch] = useState(false)
+  // Тумблер
+  const [tumblerState, setTumblerState] = useState(false)
+
   const history = useHistory()
 
   function renderLoading(value) {
@@ -50,9 +55,12 @@ function App() {
 
   function searchFilmsByWord(arr, query) {
     return arr.filter(item => {
-      return new RegExp(query, "gi").test(item.nameEN)
-        || new RegExp(query, "gi").test(item.nameRU)
-    })
+      if (item.nameEN === null || item.nameRU === null) {
+        return;
+      }
+      return item.nameEN.toLowerCase().includes(query.toLowerCase()) || item.nameRU.toLowerCase().includes(query.toLowerCase())
+    }
+    )
   }
 
   function checkArrForEmptiness(arr) {
@@ -80,7 +88,9 @@ function App() {
         })
         .then(result => checkArrForEmptiness(result))
         .catch(err => console.log(err))
-        .finally(() => renderLoading(false))
+        .finally(() => {
+          renderLoading(false)
+        })
     }
   }
 
@@ -188,11 +198,13 @@ function App() {
       })
   }
 
+  function handleTumbler() {
+    setTumblerState(!tumblerState)
+  }
+
   useEffect(() => {
-    getMovies()
     handleTokenCheck()
   }, [])
-
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -250,8 +262,11 @@ function App() {
                 bc="Header_type_app"
                 openSidebar={openSidebar} />
               <SearchForm
+                onTumbler={handleTumbler}
                 onSearchFilms={searchFilms} />
               <ProtectedRoute
+                tumblerState={tumblerState}
+                newSearch={newSearch}
                 onDeleteSearchMovie={handleDeleteSearchMovie}
                 component={Movies}
                 loggedIn={loggedIn}
@@ -271,8 +286,9 @@ function App() {
                 loggedIn={loggedIn}
                 bc="Header_type_app"
                 openSidebar={openSidebar} />
-              <SearchForm />
+              <SearchForm onTumbler={handleTumbler} />
               <ProtectedRoute
+                tumblerState={tumblerState}
                 getMovies={getMovies}
                 onDeleteMovie={handleMovieDelete}
                 films={savedMovies}

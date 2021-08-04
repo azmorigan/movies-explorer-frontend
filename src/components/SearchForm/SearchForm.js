@@ -28,9 +28,13 @@ function SearchForm(props) {
             placeholder="Фильм" />
           <button type="submit" className="SearchForm__button" />
         </div>
-        <FilterCheckbox className="FilterCheckbox_type_desktop" />
+        <FilterCheckbox
+          onTumbler={props.onTumbler}
+          className="FilterCheckbox_type_desktop" />
       </div>
-      <FilterCheckbox className="FilterCheckbox_type_mobile" />
+      <FilterCheckbox
+        onTumbler={props.onTumbler}
+        className="FilterCheckbox_type_mobile" />
     </form>
   );
 }

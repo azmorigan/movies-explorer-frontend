@@ -37,7 +37,7 @@ function Profile(props) {
       className="Profile"
       noValidate>
       <RequestError className="RequestError_type_edit" />
-      <h2 className="Profile__title">Привет, userName!</h2>
+      <h2 className="Profile__title">Привет, {name}!</h2>
       <div className="Profile__field">
         <label
           className="Profile__label"

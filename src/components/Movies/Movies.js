@@ -17,9 +17,10 @@ function Movies(props) {
         : <MoviesCardList
           onDeleteSearchMovie={props.onDeleteSearchMovie}
           films={props.films}
-          onSaveMovie={props.onSaveMovie} />}
+          onSaveMovie={props.onSaveMovie}
+          newSearch={props.newSearch}
+          tumblerState={props.tumblerState} />}
       {props.notFoundFilms && <h2 className="Movies__notice">Ничего не найдено :(</h2>}
-      {/* <div className="Movies__more">Ещё</div> */}
     </section>
 
 

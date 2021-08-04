@@ -53,28 +53,3 @@
     line-height: 24px;
   }
 }
-
-.Movies__more {
-  box-sizing: border-box;
-  margin: 50px auto 80px;
-  width: 320px;
-  padding: 10px 60px;
-  background: #F9F9F9;
-  border-radius: 6px;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 15px;
-  text-align: center;
-  cursor: pointer;
-  transition: .3s;
-}
-
-@media screen and (max-width: 767px) {
-  .Movies__more {
-    width: 240px;
-  }
-}
-
-.Movies__more:hover {
-  filter: contrast(90%);
-}
