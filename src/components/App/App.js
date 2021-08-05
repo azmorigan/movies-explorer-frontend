@@ -109,7 +109,7 @@ function App() {
   function handleRegister({ name, email, password }) {
     auth.register(name, email, password)
       .then((res) => {
-        handleLogin(res.email, password)
+        handleLogin({ email: res.email, password })
       })
       .catch(err => setError(err.message))
   }
@@ -221,7 +221,7 @@ function App() {
   useEffect(() => {
     getMovies()
     handleTokenCheck()
-  }, [])
+  }, [loggedIn])
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
