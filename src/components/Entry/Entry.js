@@ -5,10 +5,13 @@ import { Link } from 'react-router-dom';
 function Entry(props) {
   return (
     <form
+      onFocus={props.onClearError}
       className="Entry"
       onSubmit={props.onSubmit}
       noValidate>
-      <RequestError className="RequestError_type_entry" />
+      <RequestError
+        error={props.error}
+        className="RequestError_type_entry" />
       <Link to='/' className="Entry__logo" />
       <h2 className="Entry__title">{props.title}</h2>
       <div className={`Entry__inputsContainer ${props.inputsContainer}`}>

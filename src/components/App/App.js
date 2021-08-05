@@ -111,11 +111,11 @@ function App() {
       .then((res) => {
         handleLogin(res.email, password)
       })
-      .catch(err => console.log(err))
+      .catch(err => setError(err.message))
   }
 
   // Авторизация
-  function handleLogin(email, password) {
+  function handleLogin({ email, password }) {
     auth.authorize(email, password)
       .then(res => {
         console.log(res)
@@ -123,7 +123,7 @@ function App() {
         setLoggedIn(true)
         history.push('/movies')
       })
-      .catch(err => console.log(err))
+      .catch(err => setError(err.message))
   }
 
   function handleTokenCheck() {
@@ -183,14 +183,22 @@ function App() {
     })
   }
 
+  const [error, setError] = useState('')
+
+  function clearError() {
+    setError('')
+  }
+
   function handleEditUser({ name, email }) {
     mainApi.editUser(name, email, localStorage.getItem('jwt'))
       .then(res => {
-        console.log(res)
         setCurrentUser({
           name: res.name,
           email: res.email,
         })
+      })
+      .catch(err => {
+        setError(err.message)
       })
   }
 
@@ -213,7 +221,7 @@ function App() {
   useEffect(() => {
     getMovies()
     handleTokenCheck()
-  }, [loggedIn])
+  }, [])
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -225,13 +233,17 @@ function App() {
           {/* Зарегистрироваться */}
           <Route path="/signup">
             <Register
-              handleRegister={handleRegister} />
+              handleRegister={handleRegister}
+              onClearError={clearError}
+              error={error} />
           </Route>
 
           {/* Войти */}
           <Route path="/signin">
             <Login
-              handleLogin={handleLogin} />
+              handleLogin={handleLogin}
+              onClearError={clearError}
+              error={error} />
           </Route>
 
           {/* О проекте */}
@@ -256,6 +268,8 @@ function App() {
               bc="Header_type_app"
               openSidebar={openSidebar} />
             <ProtectedRoute
+              onClearError={clearError}
+              error={error}
               onEditUser={handleEditUser}
               onSignOut={handleSignOut}
               component={Profile}

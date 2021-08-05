@@ -30,7 +30,9 @@ function Register(props) {
       question="Уже зарегистрированы?"
       linkText="Войти"
       path="/signin"
-      isDisabled={!isValid}>
+      isDisabled={!isValid}
+      onClearError={props.onClearError}
+      error={props.error}>
       <InputForm
         onChange={handleChange}
         value={values.signupName || ''}

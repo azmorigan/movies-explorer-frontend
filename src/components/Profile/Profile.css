@@ -194,3 +194,17 @@
   cursor: default;
 }
 
+.Profile__cancelButton {
+  margin-top: 30px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.Profile__cancelButton:hover {
+  opacity: .8;
+}

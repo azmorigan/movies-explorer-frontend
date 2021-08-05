@@ -30,7 +30,9 @@ function Login(props) {
       linkText="Регистрация"
       path="/signup"
       inputsContainer="Entry__inputsContainer_type_login"
-      isDisabled={!isValid}>
+      isDisabled={!isValid}
+      onClearError={props.onClearError}
+      error={props.error}>
       <InputForm
         onChange={handleChange}
         value={values.signinEmail || ''}

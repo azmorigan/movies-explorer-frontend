@@ -1,5 +1,5 @@
 .RequestError {
-  display: none;
+  display: block;
   width: 100%;
   text-align: center;
   margin: 0;
@@ -14,33 +14,27 @@
 }
 
 .RequestError_type_edit {
-  bottom: 130px;
+  bottom: 175px;
 }
 
 @media screen and (max-width: 1023px) {
   .RequestError_type_edit {
-    bottom: 330px;
+    bottom: 375px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .RequestError_type_edit {
-    bottom: 100px;
+    bottom: 145px;
   }
 }
 
 .RequestError_type_entry {
-  bottom: 160px;
-}
-
-@media screen and (max-width: 1023px) {
-  .RequestError_type_entry {
-    bottom: 320px;
-  }
+  bottom: 380px;
 }
 
 @media screen and (max-width: 767px) {
   .RequestError_type_entry {
-    bottom: 114px;
+    bottom: 275px;
   }
 }
