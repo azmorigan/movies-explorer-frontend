@@ -4,14 +4,27 @@ import React, { useState, useEffect } from "react";
 
 function SearchForm(props) {
   const [searchFilm, setSearchFilm] = useState('')
+  let isSearched = false
 
   function handleChangeSearchFilm(e) {
     setSearchFilm(e.target.value)
   }
 
-  function handleSubmit(e) {
+  function handleSearchAllMovies(e) {
     e.preventDefault()
     props.onSearchFilms(searchFilm)
+  }
+
+  function handleSearchSavedMovies(e) {
+    e.preventDefault()
+    isSearched = true
+    props.onSearchFilms(searchFilm, isSearched)
+  }
+
+  const handleSubmit = (e) => {
+    document.location.pathname === '/saved-movies'
+      ? handleSearchSavedMovies(e)
+      : handleSearchAllMovies(e)
   }
 
   return (
@@ -23,7 +36,6 @@ function SearchForm(props) {
           <input
             onChange={handleChangeSearchFilm}
             value={searchFilm}
-            required
             className="SearchForm__input"
             placeholder="Фильм" />
           <button type="submit" className="SearchForm__button" />

@@ -3,8 +3,6 @@ import { useState } from 'react';
 
 function FilterCheckbox(props) {
 
-  // const [filterState, setFilterState] = useState(false)
-
   function handleChangeCheckbox() {
     props.onTumbler()
   }

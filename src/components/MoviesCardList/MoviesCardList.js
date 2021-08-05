@@ -63,15 +63,28 @@ function MoviesCardList(props) {
     if (windowWidth >= 1280) {
       setButtonMoreVisible(true)
       setInitialMovies(filmsArr.slice(0, movieCountDesktop + k1))
+      if (filmsArr.length <= 12) {
+        setButtonMoreVisible(false)
+      }
     } else if (windowWidth >= 768) {
       setButtonMoreVisible(true)
       setInitialMovies(filmsArr.slice(0, movieCountTablet + k2))
+      if (filmsArr.length <= 8) {
+        setButtonMoreVisible(false)
+      }
     } else if (320 <= windowWidth <= 767) {
       setButtonMoreVisible(true)
       setInitialMovies(filmsArr.slice(0, movieCountMobile + k3))
+      if (filmsArr.length <= 5) {
+        setButtonMoreVisible(false)
+      }
     }
 
   }, [filmsArr, movieCountDesktop, movieCountMobile, movieCountTablet, props.newSearch, windowWidth])
+
+  useEffect(() => {
+    props.isSearched && setInitialMovies(props.searchedSavedMovies)
+  }, [props.isSearched, props.searchedSavedMovies])
 
   // function filterShortMovies(arr) {
   //   const shortMovies = arr.filter(item => item.duration <= 40)

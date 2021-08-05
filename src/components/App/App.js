@@ -42,10 +42,6 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   // Открыт ли сайдбар.
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
-  // Был ли поиск фильмов
-  const [newSearch, setNewSearch] = useState(false)
-  // Тумблер
-  const [tumblerState, setTumblerState] = useState(false)
 
   const history = useHistory()
 
@@ -198,11 +194,24 @@ function App() {
       })
   }
 
+  // Тумблер
+  const [tumblerState, setTumblerState] = useState(false)
+
   function handleTumbler() {
     setTumblerState(!tumblerState)
   }
 
+  const [searchedSavedMovies, setSearchedSavedMovies] = useState([])
+  const [isSearched, setIsSearched] = useState(false)
+
+  function searchSavedFilms(query, isClicked) {
+    setSearchedSavedMovies(searchFilmsByWord(savedMovies, query))
+    setIsSearched(isClicked)
+  }
+
+
   useEffect(() => {
+    getMovies()
     handleTokenCheck()
   }, [])
 
@@ -266,7 +275,6 @@ function App() {
                 onSearchFilms={searchFilms} />
               <ProtectedRoute
                 tumblerState={tumblerState}
-                newSearch={newSearch}
                 onDeleteSearchMovie={handleDeleteSearchMovie}
                 component={Movies}
                 loggedIn={loggedIn}
@@ -286,14 +294,17 @@ function App() {
                 loggedIn={loggedIn}
                 bc="Header_type_app"
                 openSidebar={openSidebar} />
-              <SearchForm onTumbler={handleTumbler} />
+              <SearchForm
+                onSearchFilms={searchSavedFilms}
+                onTumbler={handleTumbler} />
               <ProtectedRoute
+                searchedSavedMovies={searchedSavedMovies}
                 tumblerState={tumblerState}
-                getMovies={getMovies}
                 onDeleteMovie={handleMovieDelete}
                 films={savedMovies}
                 component={SavedMovies}
-                loggedIn={loggedIn} />
+                loggedIn={loggedIn}
+                isSearched={isSearched} />
               <Footer />
             </Route>
 

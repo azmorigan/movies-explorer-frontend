@@ -1,20 +1,27 @@
 import './SavedMovies.css';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import ShortMovies from '../ShortMovies/ShortMovies';
 import { useEffect } from 'react';
 
 function SavedMovies(props) {
 
-  useEffect(() => {
-    props.getMovies()
-  }, [props.getMovies()])
-
   return (
     <section className="SavedMovies">
       <div className="SavedMovies__line" />
-      <MoviesCardList
-        films={props.films}
-        onDeleteMovie={props.onDeleteMovie}
-        tumblerState={props.tumblerState} />
+      {!props.tumblerState
+        ? <MoviesCardList
+          searchedSavedMovies={props.searchedSavedMovies}
+          films={props.films}
+          onDeleteMovie={props.onDeleteMovie}
+          tumblerState={props.tumblerState}
+          isSearched={props.isSearched} />
+        : <ShortMovies
+          onDeleteSearchMovie={props.onDeleteSearchMovie}
+          films={props.films}
+          onSaveMovie={props.onSaveMovie}
+          tumblerState={props.tumblerState} />
+      }
+
     </section>
 
   );
