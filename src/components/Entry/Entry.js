@@ -14,7 +14,12 @@ function Entry(props) {
       <div className={`Entry__inputsContainer ${props.inputsContainer}`}>
         {props.children}
       </div>
-      <button type="submit" className="Entry__button">{props.buttonName}</button>
+      <button
+        disabled={props.isDisabled}
+        type="submit"
+        className={`Entry__button ${props.isDisabled && 'Entry__button_disabled'}`}>
+        {props.buttonName}
+      </button>
       <p className="Entry__question">{props.question}
         <Link
           to={props.path}

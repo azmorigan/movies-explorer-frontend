@@ -2,6 +2,7 @@ function checkResponse(data) {
   if (data.ok) {
     return data.json()
   } else {
+    console.log(data);
     return Promise.reject(data.status)
   }
 }

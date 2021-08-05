@@ -1,24 +1,24 @@
 import Entry from '../Entry/Entry';
 import InputForm from '../InputForm/InputForm';
 import './Login.css';
-import { useState } from 'react';
+import { useEffect } from 'react';
+import { useForm } from '../../hooks/useForm';
 
 function Login(props) {
+  const { values, errors, isValid, handleChange, resetForm } = useForm()
 
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-
-  function handleChangeEmail(e) {
-    setEmail(e.target.value)
-  }
-
-  function handleChangePassword(e) {
-    setPassword(e.target.value)
-  }
+  useEffect(() => {
+    return () => {
+      resetForm()
+    }
+  }, [resetForm])
 
   function handleSubmit(e) {
     e.preventDefault()
-    props.handleLogin(email, password)
+    props.handleLogin({
+      email: values.signinEmail,
+      password: values.signinPassword,
+    })
   }
 
   return (
@@ -29,19 +29,23 @@ function Login(props) {
       question="Ещё не зарегистрированы?"
       linkText="Регистрация"
       path="/signup"
-      inputsContainer="Entry__inputsContainer_type_login">
+      inputsContainer="Entry__inputsContainer_type_login"
+      isDisabled={!isValid}>
       <InputForm
-        onChange={handleChangeEmail}
-        value={email}
+        onChange={handleChange}
+        value={values.signinEmail || ''}
         label="E-mail"
         id="signinEmail"
-        type="text" />
+        type="email"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+        errors={errors.signinEmail} />
       <InputForm
-        onChange={handleChangePassword}
-        value={password}
+        onChange={handleChange}
+        value={values.signinPassword || ''}
         label="Пароль"
         id="signinPassword"
-        type="password" />
+        type="password"
+        errors={errors.signinPassword} />
     </Entry>
   );
 }

@@ -1,29 +1,25 @@
 import Entry from '../Entry/Entry';
 import InputForm from '../InputForm/InputForm';
 import './Register.css';
-import { useState } from 'react';
+import { useEffect } from 'react';
+import { useForm } from '../../hooks/useForm';
 
 function Register(props) {
+  const { values, errors, isValid, handleChange, resetForm } = useForm()
 
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-
-  function handleChangeName(e) {
-    setName(e.target.value)
-  }
-
-  function handleChangeEmail(e) {
-    setEmail(e.target.value)
-  }
-
-  function handleChangePassword(e) {
-    setPassword(e.target.value)
-  }
+  useEffect(() => {
+    return () => {
+      resetForm()
+    }
+  }, [resetForm])
 
   function handleSubmit(e) {
     e.preventDefault()
-    props.handleRegister(name, email, password)
+    props.handleRegister({
+      name: values.signupName,
+      email: values.signupEmail,
+      password: values.signupPassword,
+    })
   }
 
   return (
@@ -33,25 +29,31 @@ function Register(props) {
       buttonName="Зарегистрироваться"
       question="Уже зарегистрированы?"
       linkText="Войти"
-      path="/signin">
+      path="/signin"
+      isDisabled={!isValid}>
       <InputForm
-        onChange={handleChangeName}
-        value={name}
+        onChange={handleChange}
+        value={values.signupName || ''}
         label="Имя"
         id="signupName"
-        type="text" />
+        pattern="[A-Za-zА-Яа-яёЁ -]+"
+        type="text"
+        errors={errors.signupName} />
       <InputForm
-        onChange={handleChangeEmail}
-        value={email}
+        onChange={handleChange}
+        value={values.signupEmail || ''}
         label="E-mail"
         id="signupEmail"
-        type="text" />
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+        type="email"
+        errors={errors.signupEmail} />
       <InputForm
-        onChange={handleChangePassword}
-        value={password}
+        onChange={handleChange}
+        value={values.signupPassword || ''}
         label="Пароль"
         id="signupPassword"
-        type="password" />
+        type="password"
+        errors={errors.signupPassword} />
     </Entry>
   );
 }

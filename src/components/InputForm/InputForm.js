@@ -3,10 +3,6 @@ import { useState } from 'react';
 
 function InputForm(props) {
 
-  function handleChange(e) {
-    props.onChange(e)
-  }
-
   return (
     <div className="InputForm">
       <label
@@ -16,8 +12,10 @@ function InputForm(props) {
       <input
         required
         className="InputForm__input"
-        onChange={handleChange}
+        onChange={props.onChange}
+        value={props.value}
         {...props} />
+      <span className="InputForm_error">{props.errors}</span>
     </div>
   );
 }

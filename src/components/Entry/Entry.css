@@ -1,6 +1,6 @@
 .Entry {
   width: 396px;
-  padding: 70px 0 70px;
+  padding: 70px 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,7 +10,6 @@
 @media screen and (max-width: 1023px) {
   .Entry {
     width: 320px;
-    padding: 232px 0 232px;
   }
 }
 
@@ -106,6 +105,11 @@
 
 .Entry__button:hover {
   filter: brightness(105%);
+}
+
+.Entry__button_disabled {
+  background-color: #bebdbd;
+  cursor: default;
 }
 
 .Entry__question {
