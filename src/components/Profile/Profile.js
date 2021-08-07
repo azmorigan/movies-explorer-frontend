@@ -16,8 +16,6 @@ function Profile(props) {
   const [disabledInput, setDisabledInput] = useState(true)
   const [clickOnEdit, setClickOnEdit] = useState(false);
 
-  // const [isErrorOpen, setIsErrorOpen] = useState(false)
-
   function handleChangeName(e) {
     setName(e.target.value)
     setNameError(e.target.validationMessage)
@@ -40,7 +38,7 @@ function Profile(props) {
     e.preventDefault()
     props.onEditUser({ name, email })
     setClickOnEdit(false)
-    // setIsErrorOpen(true)
+    setDisabledInput(true)
   }
 
   function cancelEditUser() {
@@ -121,11 +119,13 @@ function Profile(props) {
             Сохранить
           </button>
           <button
+            type="button"
             className="Profile__cancelButton"
             onClick={cancelEditUser}>Отменить</button>
         </>
         : <>
           <button
+            type="button"
             className="Profile__edit"
             onClick={openEditForm}>
             Редактировать

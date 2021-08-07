@@ -225,59 +225,59 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
+      <SavedMoviesContext.Provider value={savedMovies}>
 
 
-      <div className="App">
-        <Switch>
+        <div className="App">
+          <Switch>
 
-          {/* Зарегистрироваться */}
-          <Route path="/signup">
-            <Register
-              handleRegister={handleRegister}
-              onClearError={clearError}
-              error={error} />
-          </Route>
+            {/* Зарегистрироваться */}
+            <Route path="/signup">
+              <Register
+                handleRegister={handleRegister}
+                onClearError={clearError}
+                error={error} />
+            </Route>
 
-          {/* Войти */}
-          <Route path="/signin">
-            <Login
-              handleLogin={handleLogin}
-              onClearError={clearError}
-              error={error} />
-          </Route>
+            {/* Войти */}
+            <Route path="/signin">
+              <Login
+                handleLogin={handleLogin}
+                onClearError={clearError}
+                error={error} />
+            </Route>
 
-          {/* О проекте */}
-          <Route exact path="/">
-            <Header
-              loggedIn={loggedIn}
-              openSidebar={openSidebar} />
-            <Main>
-              <Promo />
-              <AboutProject />
-              <Techs />
-              <AboutMe />
-              <Portfolio />
-            </Main>
-            <Footer />
-          </Route>
+            {/* О проекте */}
+            <Route exact path="/">
+              <Header
+                loggedIn={loggedIn}
+                openSidebar={openSidebar} />
+              <Main>
+                <Promo />
+                <AboutProject />
+                <Techs />
+                <AboutMe />
+                <Portfolio />
+              </Main>
+              <Footer />
+            </Route>
 
-          {/* Профиль */}
-          <Route path="/profile">
-            <Header
-              loggedIn={loggedIn}
-              bc="Header_type_app"
-              openSidebar={openSidebar} />
-            <ProtectedRoute
-              onClearError={clearError}
-              error={error}
-              onEditUser={handleEditUser}
-              onSignOut={handleSignOut}
-              component={Profile}
-              loggedIn={loggedIn} />
-          </Route>
+            {/* Профиль */}
+            <Route path="/profile">
+              <Header
+                loggedIn={loggedIn}
+                bc="Header_type_app"
+                openSidebar={openSidebar} />
+              <ProtectedRoute
+                onClearError={clearError}
+                error={error}
+                onEditUser={handleEditUser}
+                onSignOut={handleSignOut}
+                component={Profile}
+                loggedIn={loggedIn} />
+            </Route>
 
 
-          <SavedMoviesContext.Provider value={savedMovies}>
             {/* Фильмы */}
             <Route path="/movies">
               <Header
@@ -300,8 +300,6 @@ function App() {
               <Footer />
             </Route>
 
-
-
             {/* Сохраненные фильмы */}
             <Route path="/saved-movies">
               <Header
@@ -322,19 +320,19 @@ function App() {
               <Footer />
             </Route>
 
-          </SavedMoviesContext.Provider>
+            <Route path="*">
+              <NotFoundPage />
+            </Route>
 
-          <Route path="*">
-            <NotFoundPage />
-          </Route>
+          </Switch>
 
+          <Sidebar
+            isOpen={isSidebarOpen}
+            onClose={closeAnyPopup} />
 
-        </Switch>
-        <Sidebar
-          isOpen={isSidebarOpen}
-          onClose={closeAnyPopup} />
+        </div>
 
-      </div>
+      </SavedMoviesContext.Provider>
     </CurrentUserContext.Provider>
   );
 }
