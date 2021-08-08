@@ -83,6 +83,8 @@ function Profile(props) {
           htmlFor="profileName">Имя
         </label>
         <input
+          minLength="2"
+          maxLength="30"
           required
           disabled={disabledInput}
           className="Profile__input"

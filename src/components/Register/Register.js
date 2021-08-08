@@ -39,6 +39,8 @@ function Register(props) {
         label="Имя"
         id="signupName"
         pattern="[A-Za-zА-Яа-яёЁ -]+"
+        minLength="2"
+        maxLength="30"
         type="text"
         errors={errors.signupName} />
       <InputForm
