@@ -29,12 +29,22 @@
   }
 }
 
-.RequestError_type_entry {
+.RequestError_type_login {
   bottom: 380px;
 }
 
 @media screen and (max-width: 767px) {
-  .RequestError_type_entry {
+  .RequestError_type_login {
+    bottom: 255px;
+  }
+}
+
+.RequestError_type_register {
+  bottom: 375px;
+}
+
+@media screen and (max-width: 767px) {
+  .RequestError_type_register {
     bottom: 275px;
   }
 }

@@ -90,7 +90,13 @@ function MoviesCardList(props) {
   }, [filmsArr, props.newSearch, windowWidth])
 
   useEffect(() => {
-    props.isSearched && setInitialMovies(props.searchedSavedMovies)
+    if (props.isSearched && props.searchedSavedMovies.length === 0) {
+      props.setNotFoundMessage(true)
+      setInitialMovies([])
+    } else {
+      props.setNotFoundMessage(false)
+      setInitialMovies(props.searchedSavedMovies)
+    }
   }, [props.isSearched, props.searchedSavedMovies])
 
   return (

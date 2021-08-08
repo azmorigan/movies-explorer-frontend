@@ -212,8 +212,8 @@ function App() {
   const [isSearched, setIsSearched] = useState(false)
 
   function searchSavedFilms(query, isClicked) {
-    setSearchedSavedMovies(searchFilmsByWord(savedMovies, query))
     setIsSearched(isClicked)
+    setSearchedSavedMovies(searchFilmsByWord(savedMovies, query))
   }
 
 

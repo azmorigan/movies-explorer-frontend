@@ -1,6 +1,6 @@
 import RequestError from '../RequestError/RequestError';
 import './Entry.css';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 
 function Entry(props) {
   return (
@@ -9,9 +9,16 @@ function Entry(props) {
       className="Entry"
       onSubmit={props.onSubmit}
       noValidate>
-      <RequestError
-        error={props.error}
-        className="RequestError_type_entry" />
+      <Route path='/signup'>
+        <RequestError
+          error={props.error}
+          className="RequestError_type_register" />
+      </Route>
+      <Route path='/signin'>
+        <RequestError
+          error={props.error}
+          className="RequestError_type_login" />
+      </Route>
       <Link to='/' className="Entry__logo" />
       <h2 className="Entry__title">{props.title}</h2>
       <div className={`Entry__inputsContainer ${props.inputsContainer}`}>
