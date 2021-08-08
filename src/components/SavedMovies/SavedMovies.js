@@ -1,7 +1,7 @@
 import './SavedMovies.css';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import ShortMovies from '../ShortMovies/ShortMovies';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function SavedMovies(props) {
   const [notFoundSavedMovies, setNotFoundSavedMovies] = useState(false)
@@ -15,6 +15,7 @@ function SavedMovies(props) {
       <div className="SavedMovies__line" />
       {!props.tumblerState
         ? <MoviesCardList
+          // changeIsClicked={props.changeIsClicked}
           setNotFoundMessage={setNotFoundMessage}
           searchedSavedMovies={props.searchedSavedMovies}
           films={props.films}

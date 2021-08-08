@@ -210,8 +210,13 @@ function App() {
 
   const [searchedSavedMovies, setSearchedSavedMovies] = useState([])
   const [isSearched, setIsSearched] = useState(false)
+  // const [bool, setBool] = useState(true)
 
+  // function changeIsClicked() {
+  //   setBool(false)
+  // }
   function searchSavedFilms(query, isClicked) {
+    // setBool(isClicked)
     setIsSearched(isClicked)
     setSearchedSavedMovies(searchFilmsByWord(savedMovies, query))
   }
@@ -309,6 +314,7 @@ function App() {
                 onSearchFilms={searchSavedFilms}
                 onTumbler={handleTumbler} />
               <ProtectedRoute
+                // changeIsClicked={changeIsClicked}
                 searchedSavedMovies={searchedSavedMovies}
                 tumblerState={tumblerState}
                 onDeleteMovie={handleMovieDelete}

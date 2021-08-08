@@ -27,14 +27,6 @@ function MoviesCardList(props) {
 
   const [buttonMoreVisible, setButtonMoreVisible] = useState(true)
 
-  useEffect(() => {
-    const handleResize = () => setTimeout(() => setWindowWidth(window.innerWidth), TIME_DELAY)
-    window.addEventListener('resize', handleResize)
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    }
-  }, [])
-
   function addMovies() {
 
     if (windowWidth >= DESKTOP_WIDTH && filmsArr.length - initialMovies.length !== 0) {
@@ -90,14 +82,29 @@ function MoviesCardList(props) {
   }, [filmsArr, props.newSearch, windowWidth])
 
   useEffect(() => {
-    if (props.isSearched && props.searchedSavedMovies.length === 0) {
-      props.setNotFoundMessage(true)
-      setInitialMovies([])
-    } else {
-      props.setNotFoundMessage(false)
-      setInitialMovies(props.searchedSavedMovies)
+    if (document.location.pathname === '/saved-movies') {
+      if (props.isSearched) {
+        if (props.searchedSavedMovies.length === 0) {
+          props.setNotFoundMessage(true)
+          setInitialMovies([])
+          // props.changeIsClicked()
+        } else {
+          props.setNotFoundMessage(false)
+          setInitialMovies(props.searchedSavedMovies)
+          // props.changeIsClicked()
+        }
+      }
     }
   }, [props.isSearched, props.searchedSavedMovies])
+
+  useEffect(() => {
+    setInitialMovies(filmsArr)
+    const handleResize = () => setTimeout(() => setWindowWidth(window.innerWidth), TIME_DELAY)
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    }
+  }, [])
 
   return (
     <>
