@@ -1,3 +1,5 @@
+import { BASE_URL } from "./config"
+
 function checkResponse(data) {
   if (data.ok) {
     return data.json()
@@ -6,8 +8,6 @@ function checkResponse(data) {
       .then(err => Promise.reject(err))
   }
 }
-
-export const BASE_URL = "https://api.kinoskop.nomoredomains.club"
 
 export const register = (name, email, password) => {
   return fetch(`${BASE_URL}/signup`, {

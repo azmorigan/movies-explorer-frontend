@@ -1,3 +1,5 @@
+import { BASE_URL, DATA_URL } from "./config";
+
 class MainApi {
   constructor({ url }) {
     this._url = url;
@@ -26,9 +28,9 @@ class MainApi {
         duration: movie.duration,
         year: movie.year,
         description: movie.description,
-        image: 'https://api.nomoreparties.co' + movie.image.url,
+        image: DATA_URL + movie.image.url,
         trailer: movie.trailerLink,
-        thumbnail: 'https://api.nomoreparties.co' + movie.image.formats.thumbnail.url,
+        thumbnail: DATA_URL + movie.image.formats.thumbnail.url,
         movieId: movie.id,
         nameRU: movie.nameRU,
         nameEN: movie.nameEN,
@@ -71,5 +73,5 @@ class MainApi {
 }
 
 export const mainApi = new MainApi({
-  url: "https://api.kinoskop.nomoredomains.club"
+  url: BASE_URL
 })

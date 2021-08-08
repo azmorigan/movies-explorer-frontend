@@ -136,7 +136,6 @@ function App() {
             email: res.email,
           })
           setLoggedIn(true)
-          history.push('/movies')
         })
         .catch(err => console.log(err))
     }
@@ -263,7 +262,7 @@ function App() {
             </Route>
 
             {/* Профиль */}
-            <Route path="/profile">
+            <Route exact path="/profile">
               <Header
                 loggedIn={loggedIn}
                 bc="Header_type_app"
@@ -279,7 +278,7 @@ function App() {
 
 
             {/* Фильмы */}
-            <Route path="/movies">
+            <Route exact path="/movies">
               <Header
                 loggedIn={loggedIn}
                 bc="Header_type_app"
@@ -301,7 +300,7 @@ function App() {
             </Route>
 
             {/* Сохраненные фильмы */}
-            <Route path="/saved-movies">
+            <Route exact path="/saved-movies">
               <Header
                 loggedIn={loggedIn}
                 bc="Header_type_app"

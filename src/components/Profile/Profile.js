@@ -87,6 +87,7 @@ function Profile(props) {
           disabled={disabledInput}
           className="Profile__input"
           type="text"
+          pattern="[A-Za-zА-Яа-яёЁ -]+"
           id="profileName"
           value={name}
           onChange={handleChangeName} />
