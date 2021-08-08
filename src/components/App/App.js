@@ -42,13 +42,22 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   // Открыт ли сайдбар.
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
-
+  // Ошибка запроса
+  const [error, setError] = useState('')
+  // Тумблер
+  const [tumblerState, setTumblerState] = useState(false)
+  // Результаты поиска в сохраненных фильмах
+  const [searchedSavedMovies, setSearchedSavedMovies] = useState([])
+  // Был ли поиск
+  const [isSearched, setIsSearched] = useState(false)
   const history = useHistory()
 
+  // Загрузка прелоадера
   function renderLoading(value) {
     setIsLoading(value)
   }
 
+  // Найти фильм по ключевому слову
   function searchFilmsByWord(arr, query) {
     return arr.filter(item => {
       if (item.nameEN === null || item.nameRU === null) {
@@ -59,6 +68,7 @@ function App() {
     )
   }
 
+  // Проверка массива фильмов на пустоту
   function checkArrForEmptiness(arr) {
     if (arr.length !== 0) {
       setFoundMovies(arr)
@@ -90,6 +100,7 @@ function App() {
     }
   }
 
+  // Отрендерить фильмы при входе из локального хранилища
   function renderUserFilms() {
     if (localStorage.getItem('userSearchFilms')) {
       const userSearchFilms = JSON.parse(localStorage.getItem('userSearchFilms'))
@@ -126,6 +137,7 @@ function App() {
       .catch(err => setError(err.message))
   }
 
+  // Работа токена
   function handleTokenCheck() {
     if (localStorage.getItem('jwt')) {
       const jwt = localStorage.getItem('jwt')
@@ -141,6 +153,7 @@ function App() {
     }
   }
 
+  // Выход из аккаунта
   function handleSignOut() {
     localStorage.removeItem('jwt')
     localStorage.removeItem('allFilms')
@@ -149,6 +162,7 @@ function App() {
     setLoggedIn(false)
   }
 
+  // Получить фильмы пользователя
   function getMovies() {
     mainApi.getUserMovies(localStorage.getItem('jwt'))
       .then(res => {
@@ -157,6 +171,7 @@ function App() {
       .catch(err => console.log(err))
   }
 
+  // Сохранить фильм 
   function saveMovie(movie) {
     mainApi.saveMovie(movie, localStorage.getItem('jwt'))
       .then(newMovie => {
@@ -165,6 +180,7 @@ function App() {
       .catch(err => console.log(err))
   }
 
+  // Удалить фильм
   function handleMovieDelete(filmId) {
     mainApi.deleteMovie(filmId, localStorage.getItem('jwt'))
       .then((res) => {
@@ -174,6 +190,7 @@ function App() {
       .catch(err => console.log(err))
   }
 
+  // Удалить фильм со страницы '/movies'
   function handleDeleteSearchMovie(movie) {
     savedMovies.forEach(item => {
       if (item.nameRU === movie.nameRU) {
@@ -182,12 +199,12 @@ function App() {
     })
   }
 
-  const [error, setError] = useState('')
-
+  // Очистить ошибку запроса
   function clearError() {
     setError('')
   }
 
+  // Редактирование профиля
   function handleEditUser({ name, email }) {
     mainApi.editUser(name, email, localStorage.getItem('jwt'))
       .then(res => {
@@ -201,26 +218,16 @@ function App() {
       })
   }
 
-  // Тумблер
-  const [tumblerState, setTumblerState] = useState(false)
-
+  // Переключить тумблер
   function handleTumbler() {
     setTumblerState(!tumblerState)
   }
 
-  const [searchedSavedMovies, setSearchedSavedMovies] = useState([])
-  const [isSearched, setIsSearched] = useState(false)
-  // const [bool, setBool] = useState(true)
-
-  // function changeIsClicked() {
-  //   setBool(false)
-  // }
+  // Поиск в сохраненных фильмах
   function searchSavedFilms(query, isClicked) {
-    // setBool(isClicked)
     setIsSearched(isClicked)
     setSearchedSavedMovies(searchFilmsByWord(savedMovies, query))
   }
-
 
   useEffect(() => {
     getMovies()
@@ -314,7 +321,6 @@ function App() {
                 onSearchFilms={searchSavedFilms}
                 onTumbler={handleTumbler} />
               <ProtectedRoute
-                // changeIsClicked={changeIsClicked}
                 searchedSavedMovies={searchedSavedMovies}
                 tumblerState={tumblerState}
                 onDeleteMovie={handleMovieDelete}
