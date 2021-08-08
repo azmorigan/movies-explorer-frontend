@@ -7,7 +7,7 @@ import Techs from '../Techs/Techs';
 import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
-import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import Sidebar from '../Sidebar/Sidebar';
 import SearchForm from '../SearchForm/SearchForm';

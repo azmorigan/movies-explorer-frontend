@@ -1,7 +1,6 @@
 import './SavedMovies.css';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import ShortMovies from '../ShortMovies/ShortMovies';
-import { useEffect } from 'react';
 
 function SavedMovies(props) {
 

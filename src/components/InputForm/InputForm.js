@@ -1,5 +1,4 @@
 import './InputForm.css';
-import { useState } from 'react';
 
 function InputForm(props) {
 

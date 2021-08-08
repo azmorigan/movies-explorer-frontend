@@ -1,5 +1,5 @@
 import './MoviesCard.css';
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { SavedMoviesContext } from '../../contexts/SavedMoviesContext';
 

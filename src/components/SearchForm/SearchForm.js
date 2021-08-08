@@ -1,6 +1,6 @@
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 function SearchForm(props) {
   const [searchFilm, setSearchFilm] = useState('')
