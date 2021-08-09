@@ -28,7 +28,7 @@ function Sidebar(props) {
           </NavLink>
         </div>
 
-        <AccountButton className="Sidebar__account" />
+        <AccountButton className="AccountButton_type_sidebar" />
         <CloseButton onClose={props.onClose} />
 
       </div >

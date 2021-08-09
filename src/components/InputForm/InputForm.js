@@ -1,13 +1,6 @@
 import './InputForm.css';
-import { useState } from 'react';
 
 function InputForm(props) {
-
-  const [inputValue, setInputValue] = useState('')
-
-  function handleChange(e) {
-    setInputValue(e.target.value)
-  }
 
   return (
     <div className="InputForm">
@@ -16,11 +9,12 @@ function InputForm(props) {
         htmlFor={props.id}>{props.label}
       </label>
       <input
-        id={props.id}
+        required
         className="InputForm__input"
-        type={props.type}
-        onChange={handleChange}
-        value={inputValue} />
+        onChange={props.onChange}
+        value={props.value}
+        {...props} />
+      <span className="InputForm_error">{props.errors}</span>
     </div>
   );
 }

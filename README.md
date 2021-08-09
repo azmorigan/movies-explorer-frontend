@@ -1,6 +1,10 @@
-## Movies frontend
-фронт - https://kinoskop.nomoredomains.club/
-бэк - https://api.kinoskop.nomoredomains.club/
-# Ссылка на макет
-https://www.figma.com/file/ovbd1EX1djozRAdTvfV8zV/Diploma-Copy?node-id=891%3A3857
+##  Kinoskop :movie_camera:
 
+ Фронтенд часть приложения для поиска фильмов.\
+ https://kinoskop.nomoredomains.club \
+ Технологии: React CRA, JSX, RestApi, Git, CSS.\
+ 
+![Скриншот](./src/images/screen.PNG) \
+ Для запуска проекта на локальном сервере используйте команды:\
+ `npm i` - для загрузки пакетов \
+ `npm start` - для запуска проекта на локальном сервере

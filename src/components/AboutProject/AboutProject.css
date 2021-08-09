@@ -1,7 +1,8 @@
 .AboutProject {
-  margin: 0 auto;
   padding: 110px 70px 105px;
   max-width: 1140px;
+  align-self: center;
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 1023px) {

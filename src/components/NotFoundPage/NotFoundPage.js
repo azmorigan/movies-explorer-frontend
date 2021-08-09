@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import './NotFoundPage.css';
 
-function NotFoundPage(props) {
+function NotFoundPage() {
   return (
     <div className="NotFoundPage">
       <h2 className="NotFoundPage__title">404</h2>

@@ -1,11 +1,12 @@
 .Profile {
-  max-width: 410px;
-  margin: auto;
+  width: 410px;
   padding: 74px 0 70px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  align-self: center;
+  box-sizing: border-box;
   position: relative;
 }
 
@@ -17,7 +18,8 @@
 
 @media screen and (max-width: 767px) {
   .Profile {
-    padding: 70px 30px 40px;
+    width: 290px;
+    padding: 70px 0 40px;
   }
 }
 
@@ -55,7 +57,6 @@
 
 .Profile__field:last-of-type {
   padding: 0;
-  margin: 0;
   border-bottom: none;
 }
 
@@ -81,6 +82,33 @@
 .Profile__input:disabled {
   color: #000;
   background-color: #fff;
+}
+
+.Profile__input::placeholder {
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  color: #000;
+}
+
+.Profile__input:focus .Profile__input::placeholder{
+  display: none;
+}
+
+.Profile__error {
+  align-self: start;
+  margin-bottom: 10px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: rgb(228, 0, 0);
+}
+
+@media screen and (max-width: 1023px) {
+  .Profile__error {
+    font-size: 10px;
+    line-height: 12px;
+  }
 }
 
 .Profile__edit {
@@ -161,3 +189,22 @@
   filter: brightness(105%);
 }
 
+.Profile__saveButton_disabled {
+  background-color: #bebdbd;
+  cursor: default;
+}
+
+.Profile__cancelButton {
+  margin-top: 30px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.Profile__cancelButton:hover {
+  opacity: .8;
+}

@@ -2,4 +2,8 @@
   min-width: 320px;
   font-family: 'Inter', Arial, sans-serif;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  height: 100%;
 }

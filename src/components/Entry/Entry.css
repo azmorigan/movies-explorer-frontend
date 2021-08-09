@@ -1,21 +1,21 @@
 .Entry {
-  max-width: 396px;
-  margin: auto;
-  padding: 70px 0 70px;
+  width: 396px;
+  padding: 70px 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  align-self: center;
 }
 
 @media screen and (max-width: 1023px) {
   .Entry {
-    padding: 232px 0 232px;
+    width: 320px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .Entry {
-    max-width: 260px;
+    width: 260px;
     padding: 56px 0 30px;
   }
 }
@@ -105,6 +105,11 @@
 
 .Entry__button:hover {
   filter: brightness(105%);
+}
+
+.Entry__button_disabled {
+  background-color: #bebdbd;
+  cursor: default;
 }
 
 .Entry__question {

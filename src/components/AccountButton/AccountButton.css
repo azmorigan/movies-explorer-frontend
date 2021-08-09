@@ -12,13 +12,23 @@
   transition: .3s;
 }
 
+.AccountButton_active {
+  border: 1px solid rgb(105, 105, 105);
+}
+
 .AccountButton:hover {
   opacity: .8;
 }
 
 @media screen and (max-width: 768px) {
-  .AccountButton {
+  .AccountButton_type_header {
     display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .AccountButton_type_sidebar {
+    display: flex;
   }
 }
 

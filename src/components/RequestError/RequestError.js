@@ -1,8 +1,12 @@
 import './RequestError.css';
 
 function RequestError(props) {
+
   return (
-    <p className={`RequestError ${props.className}`}>Вы ввели неправильный логин или пароль.</p>
+    <p
+      className={`RequestError ${props.className}`}>
+      {props.error}
+    </p>
   );
 }
 
